@@ -23,7 +23,8 @@ export const HopelandLogo: React.FC<LogoProps> = ({
   className = '',
   width,
   height,
-  alt = 'Hopeland Estates and Realty Corporation'
+  alt = 'Hopeland Estates and Realty Corporation',
+  showBadgeBackground = false
 }) => {
   let defaultMaxWidth = width;
   let defaultHeight = height;
@@ -45,25 +46,28 @@ export const HopelandLogo: React.FC<LogoProps> = ({
     defaultHeight = height || 52;
   }
 
+  const logoSrc =
+    variant === 'symbol'
+      ? OFFICIAL_EMBLEM_TRANSPARENT_PATH
+      : showBadgeBackground
+      ? OFFICIAL_LOGO_PATH
+      : OFFICIAL_LOGO_TRANSPARENT_PATH;
+
   return (
-    <div
-      className={`inline-flex items-center justify-center shrink-0 ${className}`}
+    <img
+      src={logoSrc}
+      alt={alt}
+      className={`w-auto object-contain object-center block select-none shrink-0 ${
+        showBadgeBackground ? 'bg-white p-2 rounded-[4px]' : ''
+      } ${className}`}
       style={{
         height: defaultHeight ? `${defaultHeight}px` : undefined,
-        maxWidth: defaultMaxWidth ? `${defaultMaxWidth}px` : undefined
+        maxWidth: defaultMaxWidth ? `${defaultMaxWidth}px` : undefined,
+        objectFit: 'contain',
+        objectPosition: 'center'
       }}
-    >
-      <img
-        src={OFFICIAL_LOGO_PATH}
-        alt={alt}
-        className="h-full w-auto max-w-full object-contain object-center bg-white px-2 py-1 rounded-[3px] block select-none"
-        style={{
-          objectFit: 'contain',
-          objectPosition: 'center'
-        }}
-        loading="eager"
-        decoding="async"
-      />
-    </div>
+      loading="eager"
+      decoding="async"
+    />
   );
 };

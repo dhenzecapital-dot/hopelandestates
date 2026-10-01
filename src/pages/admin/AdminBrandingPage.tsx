@@ -180,7 +180,7 @@ export const AdminBrandingPage: React.FC = () => {
         >
           <div className="max-w-md w-full flex flex-col items-center justify-center text-center">
             <img
-              src={OFFICIAL_LOGO_PATH}
+              src={previewBg === 'white' ? OFFICIAL_LOGO_PATH : OFFICIAL_LOGO_TRANSPARENT_PATH}
               alt="Hopeland Estates and Realty Corporation Official Logo"
               className="max-h-72 w-auto object-contain transition-all"
             />
