@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="navyPillarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#163A63" />
+      <stop offset="50%" stop-color="#0B2345" />
+      <stop offset="100%" stop-color="#07172F" />
+    </linearGradient>
+    <linearGradient id="goldRoofGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5C775" />
+      <stop offset="50%" stop-color="#C49A32" />
+      <stop offset="100%" stop-color="#9C7721" />
+    </linearGradient>
+    <linearGradient id="goldFacetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F2D888" />
+      <stop offset="60%" stop-color="#C49A32" />
+      <stop offset="100%" stop-color="#8F6A18" />
+    </linearGradient>
+    <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#07172F" />
+      <stop offset="50%" stop-color="#0B2345" />
+      <stop offset="100%" stop-color="#163A63" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left Main Pillar / Left leg of H -->
+  <polygon points="175,225 175,65 220,25 220,240" fill="url(#navyPillarGrad)" />
+  <polygon points="220,25 220,240 245,240 245,100" fill="#0B2345" />
+  <!-- Left Inner H upright -->
+  <polygon points="245,100 245,240 265,240 265,115" fill="#163A63" />
+
+  <!-- Center H Horizontal Bridge -->
+  <rect x="245" y="150" width="110" height="26" fill="#0B2345" />
+
+  <!-- Right Inner H upright -->
+  <polygon points="335,115 335,240 355,240 355,100" fill="#163A63" />
+  <!-- Right Gold Facet -->
+  <polygon points="380,105 380,240 400,240 400,105" fill="url(#goldFacetGrad)" />
+  <!-- Right Main Pillar / Right leg of H -->
+  <polygon points="380,25 380,240 425,225 425,65" fill="url(#navyPillarGrad)" />
+
+  <!-- Center House Roofline (Gold Gable) -->
+  <polygon points="300,180 180,270 200,278 300,205 400,278 420,270" fill="url(#goldRoofGrad)" />
+  <polygon points="300,205 200,278 200,285 300,212 400,285 400,278" fill="#9C7721" />
+
+  <!-- House Window (4 Panes in Gold) -->
+  <rect x="283" y="240" width="14" height="14" fill="#C49A32" />
+  <rect x="303" y="240" width="14" height="14" fill="#C49A32" />
+  <rect x="283" y="258" width="14" height="14" fill="#C49A32" />
+  <rect x="303" y="258" width="14" height="14" fill="#C49A32" />
+
+  <!-- Sweeping Curved Horizon Arc Base -->
+  <path d="M 140,320 Q 300,285 460,320 Q 300,298 140,320 Z" fill="url(#arcGrad)" />
+
+  <!-- HOPELAND Wordmark -->
+  <text x="300" y="405" font-family="'Cinzel', Georgia, serif" font-size="68" font-weight="800" fill="#0B2345" text-anchor="middle" letter-spacing="4">HOPELAND</text>
+
+  <!-- Gold Rule Left -->
+  <line x1="140" y1="428" x2="185" y2="428" stroke="#C49A32" stroke-width="2.5" />
+  <!-- ESTATES AND REALTY CORPORATION -->
+  <text x="300" y="434" font-family="'Cinzel', Georgia, serif" font-size="16" font-weight="700" fill="#C49A32" text-anchor="middle" letter-spacing="3.5">ESTATES AND REALTY CORPORATION</text>
+  <!-- Gold Rule Right -->
+  <line x1="415" y1="428" x2="460" y2="428" stroke="#C49A32" stroke-width="2.5" />
+
+  <!-- Tagline -->
+  <text x="300" y="465" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="11" font-weight="600" fill="#0B2345" text-anchor="middle" letter-spacing="2.8">BUILDING STRONG FOUNDATIONS FOR BETTER TOMORROWS.</text>
+</svg>
