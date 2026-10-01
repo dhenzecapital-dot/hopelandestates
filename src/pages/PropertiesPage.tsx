@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Property, PropertyCategory } from '../types/index.ts';
 import { api } from '../services/api.ts';
+import { getAssetUrl } from '../utils/assets.ts';
 import { MapPin, Bed, Bath, Car, Maximize2, Search, ChevronRight } from 'lucide-react';
 
 interface PropertiesPageProps {
@@ -99,7 +100,7 @@ export const PropertiesPage: React.FC<PropertiesPageProps> = ({ onNavigate }) =>
                   {/* Property Image */}
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
                     <img
-                      src={prop.featuredImage}
+                      src={getAssetUrl(prop.featuredImage)}
                       alt={prop.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       referrerPolicy="no-referrer"

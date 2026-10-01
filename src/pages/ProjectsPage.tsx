@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Project, ProjectCategory } from '../types/index.ts';
 import { api } from '../services/api.ts';
+import { getAssetUrl } from '../utils/assets.ts';
 import { MapPin, Search, ChevronRight, Layers, AlertCircle } from 'lucide-react';
 
 interface ProjectsPageProps {
@@ -131,7 +132,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onNavigate }) => {
                   {/* Featured Image */}
                   <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-900">
                     <img
-                      src={proj.featuredImage}
+                      src={getAssetUrl(proj.featuredImage)}
                       alt={proj.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       referrerPolicy="no-referrer"

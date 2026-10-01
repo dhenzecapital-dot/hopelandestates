@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Property } from '../types/index.ts';
 import { api } from '../services/api.ts';
+import { getAssetUrl } from '../utils/assets.ts';
 import {
   MapPin,
   Maximize2,
@@ -113,7 +114,7 @@ export const PropertyDetailPage: React.FC<PropertyDetailPageProps> = ({ slug, on
             {/* Main Visual */}
             <div className="aspect-[16/9] w-full rounded-lg overflow-hidden bg-slate-900 border border-slate-200">
               <img
-                src={property.featuredImage}
+                src={getAssetUrl(property.featuredImage)}
                 alt={property.title}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"

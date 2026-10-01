@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Project } from '../types/index.ts';
 import { api } from '../services/api.ts';
+import { getAssetUrl } from '../utils/assets.ts';
 import {
   MapPin,
   Building,
@@ -114,7 +115,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
       {/* Hero Visual Banner */}
       <div className="relative h-[380px] sm:h-[460px] w-full bg-slate-900 overflow-hidden">
         <img
-          src={project.featuredImage}
+          src={getAssetUrl(project.featuredImage)}
           alt={project.name}
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
@@ -260,7 +261,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                   {project.gallery.map((imgUrl, i) => (
                     <div key={i} className="aspect-[16/9] rounded overflow-hidden border border-slate-200 bg-slate-100">
                       <img
-                        src={imgUrl}
+                        src={getAssetUrl(imgUrl)}
                         alt={`${project.name} render ${i + 1}`}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         referrerPolicy="no-referrer"

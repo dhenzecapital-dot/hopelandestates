@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { HopelandLogo } from '../components/HopelandLogo.tsx';
 import { Project, DashboardStats, WebsiteContent } from '../types/index.ts';
 import { api } from '../services/api.ts';
+import { getAssetUrl } from '../utils/assets.ts';
 import {
   Building2,
   Home as HomeIcon,
@@ -53,7 +54,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         {/* Subtle architectural imagery with gentle single-tone scrim */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <img
-            src="/src/assets/images/hero_hopeland_architecture_1790880040767.jpg"
+            src={getAssetUrl('assets/images/hero_hopeland_architecture_1790880040767.jpg')}
             alt="Hopeland Estates Architecture"
             className="w-full h-full object-cover object-center opacity-25"
             referrerPolicy="no-referrer"
@@ -306,7 +307,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 {/* Project Image */}
                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-900">
                   <img
-                    src={proj.featuredImage}
+                    src={getAssetUrl(proj.featuredImage)}
                     alt={proj.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"

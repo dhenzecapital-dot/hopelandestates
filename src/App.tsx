@@ -28,22 +28,47 @@ import { AdminBrandingPage } from './pages/admin/AdminBrandingPage.tsx';
 import { AdminUsersPage } from './pages/admin/AdminUsersPage.tsx';
 import { AdminAuditLogsPage } from './pages/admin/AdminAuditLogsPage.tsx';
 
+const rawBase = import.meta.env.BASE_URL || '/';
+const BASE_PATH = rawBase.endsWith('/') && rawBase !== '/' ? rawBase.slice(0, -1) : (rawBase === '/' ? '' : rawBase);
+
+export const getAppPath = (pathname: string): string => {
+  let p = pathname || '/';
+  if (BASE_PATH && p.startsWith(BASE_PATH)) {
+    p = p.slice(BASE_PATH.length);
+  } else if (p.startsWith('/hopelandestates')) {
+    p = p.slice('/hopelandestates'.length);
+  }
+  if (!p || !p.startsWith('/')) {
+    p = '/' + (p || '');
+  }
+  if (p.length > 1 && p.endsWith('/')) {
+    p = p.slice(0, -1);
+  }
+  return p;
+};
+
+export const toFullPath = (path: string): string => {
+  const cleanPath = path.startsWith('/') ? path : '/' + path;
+  return `${BASE_PATH}${cleanPath}`;
+};
+
 function AppContent() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
+  const [currentPath, setCurrentPath] = useState(() => getAppPath(window.location.pathname));
   const [adminTab, setAdminTab] = useState('dashboard');
   const { user, loading } = useAuth();
 
   useEffect(() => {
     const onPopState = () => {
-      setCurrentPath(window.location.pathname);
+      setCurrentPath(getAppPath(window.location.pathname));
     };
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
   const navigate = (path: string) => {
-    window.history.pushState({}, '', path);
-    setCurrentPath(path);
+    const fullPath = toFullPath(path);
+    window.history.pushState({}, '', fullPath);
+    setCurrentPath(getAppPath(fullPath));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
