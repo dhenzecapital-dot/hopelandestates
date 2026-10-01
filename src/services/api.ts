@@ -50,15 +50,14 @@ export const api = {
         method: 'POST',
         body: JSON.stringify({ email, password })
       });
-    } catch (err) {
-      // Fallback for static GitHub Pages deployment
+    } catch {
       return clientDb.login(email, password);
     }
   },
   getCurrentUser: async () => {
     try {
       return await fetchJson<{ user: User }>('/api/auth/me');
-    } catch (err) {
+    } catch {
       const token = authStorage.getToken();
       if (!token) throw new Error('Not authenticated');
       const user = clientDb.getCurrentUser(token);
@@ -199,49 +198,83 @@ export const api = {
         general: GeneralInquiry[];
         investment: InvestmentInquiry[];
         landowner: LandownerInquiry[];
-      }>('/api/inquiries');
+      }>('/api/admin/inquiries');
     } catch {
       return clientDb.getInquiries();
     }
   },
-  submitGeneralInquiry: async (inquiry: Omit<GeneralInquiry, 'id' | 'dateSubmitted' | 'status'>) => {
+  getAdminInquiries: async () => {
     try {
-      return await fetchJson<GeneralInquiry>('/api/inquiries/general', {
-        method: 'POST',
-        body: JSON.stringify(inquiry)
-      });
+      return await fetchJson<{
+        general: GeneralInquiry[];
+        investment: InvestmentInquiry[];
+        landowner: LandownerInquiry[];
+      }>('/api/admin/inquiries');
     } catch {
-      return clientDb.submitGeneralInquiry(inquiry);
+      return clientDb.getInquiries();
     }
   },
-  submitInvestmentInquiry: async (inquiry: Omit<InvestmentInquiry, 'id' | 'dateSubmitted' | 'status'>) => {
+  submitGeneralInquiry: async (inquiry: Partial<GeneralInquiry>) => {
     try {
-      return await fetchJson<InvestmentInquiry>('/api/inquiries/investment', {
+      return await fetchJson<{ success: boolean; referenceNo: string; message: string }>('/api/inquiries/general', {
         method: 'POST',
         body: JSON.stringify(inquiry)
       });
     } catch {
-      return clientDb.submitInvestmentInquiry(inquiry);
+      const item = clientDb.submitGeneralInquiry(inquiry);
+      return { success: true, referenceNo: item.referenceNo, message: 'Inquiry submitted.' };
     }
   },
-  submitLandownerInquiry: async (inquiry: Omit<LandownerInquiry, 'id' | 'dateSubmitted' | 'status'>) => {
+  submitInvestmentInquiry: async (inquiry: Partial<InvestmentInquiry>) => {
     try {
-      return await fetchJson<LandownerInquiry>('/api/inquiries/landowner', {
+      return await fetchJson<{ success: boolean; referenceNo: string; message: string }>('/api/inquiries/investment', {
         method: 'POST',
         body: JSON.stringify(inquiry)
       });
     } catch {
-      return clientDb.submitLandownerInquiry(inquiry);
+      const item = clientDb.submitInvestmentInquiry(inquiry);
+      return { success: true, referenceNo: item.referenceNo, message: 'Investment inquiry submitted.' };
+    }
+  },
+  submitLandownerInquiry: async (inquiry: Partial<LandownerInquiry>) => {
+    try {
+      return await fetchJson<{ success: boolean; referenceNo: string; message: string }>('/api/inquiries/landowner', {
+        method: 'POST',
+        body: JSON.stringify(inquiry)
+      });
+    } catch {
+      const item = clientDb.submitLandownerInquiry(inquiry);
+      return { success: true, referenceNo: item.referenceNo, message: 'Landowner inquiry submitted.' };
+    }
+  },
+  updateInquiry: async (type: 'general' | 'investment' | 'landowner', id: string, updates: any) => {
+    try {
+      return await fetchJson<any>(`/api/admin/inquiries/${type}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(updates)
+      });
+    } catch {
+      return clientDb.updateInquiry(type, id, updates);
     }
   },
   updateInquiryStatus: async (type: 'general' | 'investment' | 'landowner', id: string, status: any) => {
     try {
-      return await fetchJson<any>(`/api/inquiries/${type}/${id}/status`, {
-        method: 'PATCH',
+      return await fetchJson<any>(`/api/admin/inquiries/${type}/${id}`, {
+        method: 'PUT',
         body: JSON.stringify({ status })
       });
     } catch {
-      return { success: clientDb.updateInquiryStatus(type, id, status) };
+      return clientDb.updateInquiry(type, id, { status });
+    }
+  },
+  addFollowUp: async (type: 'general' | 'investment' | 'landowner', id: string, notes: string) => {
+    try {
+      return await fetchJson<any>(`/api/admin/inquiries/${type}/${id}/follow-up`, {
+        method: 'POST',
+        body: JSON.stringify({ notes })
+      });
+    } catch {
+      return clientDb.addFollowUp(type, id, notes);
     }
   },
 
@@ -253,19 +286,20 @@ export const api = {
       return clientDb.getCareers(all);
     }
   },
-  submitCareerApplication: async (application: Omit<CareerApplication, 'id' | 'dateSubmitted' | 'status'>) => {
+  submitCareerApplication: async (application: Partial<CareerApplication>) => {
     try {
-      return await fetchJson<CareerApplication>('/api/careers/apply', {
+      return await fetchJson<{ success: boolean; referenceNo: string; message: string }>('/api/careers/apply', {
         method: 'POST',
         body: JSON.stringify(application)
       });
     } catch {
-      return clientDb.submitCareerApplication(application);
+      const item = clientDb.submitCareerApplication(application);
+      return { success: true, referenceNo: item.referenceNo, message: 'Application submitted.' };
     }
   },
   getCareerApplications: async () => {
     try {
-      return await fetchJson<CareerApplication[]>('/api/careers/applications');
+      return await fetchJson<CareerApplication[]>('/api/admin/career-applications');
     } catch {
       return clientDb.getCareerApplications();
     }
@@ -280,6 +314,16 @@ export const api = {
     }
   },
   addDocument: async (doc: Partial<CorporateDocument>) => {
+    try {
+      return await fetchJson<CorporateDocument>('/api/documents', {
+        method: 'POST',
+        body: JSON.stringify(doc)
+      });
+    } catch {
+      return clientDb.addDocument(doc);
+    }
+  },
+  uploadDocument: async (doc: Partial<CorporateDocument>) => {
     try {
       return await fetchJson<CorporateDocument>('/api/documents', {
         method: 'POST',
@@ -330,25 +374,25 @@ export const api = {
   // Users
   getUsers: async () => {
     try {
-      return await fetchJson<User[]>('/api/users');
+      return await fetchJson<User[]>('/api/admin/users');
     } catch {
       return clientDb.getUsers();
     }
   },
   createUser: async (userData: any) => {
-    return fetchJson<User>('/api/users', {
+    return fetchJson<User>('/api/admin/users', {
       method: 'POST',
       body: JSON.stringify(userData)
     });
   },
   updateUser: async (id: string, userData: any) => {
-    return fetchJson<User>(`/api/users/${id}`, {
+    return fetchJson<User>(`/api/admin/users/${id}`, {
       method: 'PUT',
       body: JSON.stringify(userData)
     });
   },
   deleteUser: async (id: string) => {
-    return fetchJson<{ success: boolean }>(`/api/users/${id}`, {
+    return fetchJson<{ success: boolean }>(`/api/admin/users/${id}`, {
       method: 'DELETE'
     });
   },
@@ -361,7 +405,7 @@ export const api = {
       return clientDb.getCMS();
     }
   },
-  updateCMS: async (content: WebsiteContent) => {
+  updateCMS: async (content: Partial<WebsiteContent>) => {
     try {
       return await fetchJson<WebsiteContent>('/api/cms', {
         method: 'PUT',
@@ -375,7 +419,7 @@ export const api = {
   // Logs
   getActivityLogs: async () => {
     try {
-      return await fetchJson<ActivityLog[]>('/api/logs');
+      return await fetchJson<ActivityLog[]>('/api/admin/activity-logs');
     } catch {
       return clientDb.getActivityLogs();
     }

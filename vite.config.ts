@@ -3,12 +3,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  /*
-   * GitHub Pages repository deployment path.
-   * This is required because the website is hosted under
-   * /hopelandestates/ instead of the domain root.
-   */
-  base: '/hopelandestates/',
+  base: '/',
 
   plugins: [
     react(),
@@ -19,6 +14,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000,
     strictPort: false,
+    allowedHosts: true,
   },
 
   preview: {

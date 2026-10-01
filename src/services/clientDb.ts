@@ -58,11 +58,11 @@ export const clientDb = {
     const db = loadDatabase();
     return db.websiteContent;
   },
-  updateCMS: (content: WebsiteContent): WebsiteContent => {
+  updateCMS: (content: Partial<WebsiteContent>): WebsiteContent => {
     const db = loadDatabase();
-    db.websiteContent = content;
+    db.websiteContent = { ...db.websiteContent, ...content };
     saveDatabase(db);
-    return content;
+    return db.websiteContent;
   },
 
   // Projects
@@ -80,9 +80,10 @@ export const clientDb = {
   },
   createProject: (data: Partial<Project>): Project => {
     const db = loadDatabase();
+    const now = new Date().toISOString();
     const newProject: Project = {
       id: `proj-${Date.now()}`,
-      slug: (data.name || 'project').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+      slug: data.slug || (data.name || 'project').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
       name: data.name || 'Untitled Project',
       location: data.location || '',
       category: data.category || 'Residential',
@@ -102,7 +103,9 @@ export const clientDb = {
       gallery: data.gallery || [],
       published: data.published ?? true,
       featured: data.featured ?? false,
-      dateCreated: new Date().toISOString().split('T')[0]
+      order: data.order ?? db.projects.length + 1,
+      createdAt: now,
+      updatedAt: now
     };
     db.projects.unshift(newProject);
     saveDatabase(db);
@@ -112,7 +115,7 @@ export const clientDb = {
     const db = loadDatabase();
     const idx = db.projects.findIndex(p => p.id === id);
     if (idx === -1) throw new Error('Project not found');
-    db.projects[idx] = { ...db.projects[idx], ...data };
+    db.projects[idx] = { ...db.projects[idx], ...data, updatedAt: new Date().toISOString() };
     saveDatabase(db);
     return db.projects[idx];
   },
@@ -138,26 +141,30 @@ export const clientDb = {
   },
   createProperty: (data: Partial<Property>): Property => {
     const db = loadDatabase();
+    const now = new Date().toISOString();
     const newProperty: Property = {
       id: `prop-${Date.now()}`,
-      slug: (data.title || 'property').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+      slug: data.slug || (data.title || 'property').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
       title: data.title || 'Untitled Property',
-      code: data.code || `HL-${Math.floor(1000 + Math.random() * 9000)}`,
-      projectReference: data.projectReference || '',
+      projectId: data.projectId || '',
+      projectName: data.projectName || '',
       location: data.location || '',
       category: data.category || 'Residential Lot',
-      status: data.status || 'AVAILABLE',
-      indicativePrice: data.indicativePrice || 0,
-      lotAreaSqm: data.lotAreaSqm || 0,
-      floorAreaSqm: data.floorAreaSqm,
-      pricePerSqm: data.pricePerSqm,
+      status: data.status || 'Available',
+      lotArea: Number(data.lotArea) || 0,
+      floorArea: data.floorArea ? Number(data.floorArea) : undefined,
+      bedrooms: data.bedrooms ? Number(data.bedrooms) : undefined,
+      bathrooms: data.bathrooms ? Number(data.bathrooms) : undefined,
+      parking: data.parking ? Number(data.parking) : undefined,
+      price: Number(data.price) || 0,
+      currency: data.currency || 'PHP',
       description: data.description || '',
-      highlights: data.highlights || [],
+      features: data.features || [],
       featuredImage: data.featuredImage || 'assets/images/project_bical_residential_1790880055584.jpg',
-      gallery: data.gallery || [],
+      images: data.images || [],
       published: data.published ?? true,
-      featured: data.featured ?? false,
-      dateCreated: new Date().toISOString().split('T')[0]
+      createdAt: now,
+      updatedAt: now
     };
     db.properties.unshift(newProperty);
     saveDatabase(db);
@@ -167,7 +174,7 @@ export const clientDb = {
     const db = loadDatabase();
     const idx = db.properties.findIndex(p => p.id === id);
     if (idx === -1) throw new Error('Property not found');
-    db.properties[idx] = { ...db.properties[idx], ...data };
+    db.properties[idx] = { ...db.properties[idx], ...data, updatedAt: new Date().toISOString() };
     saveDatabase(db);
     return db.properties[idx];
   },
@@ -187,70 +194,171 @@ export const clientDb = {
       landowner: db.landownerInquiries
     };
   },
-  submitGeneralInquiry: (data: Omit<GeneralInquiry, 'id' | 'dateSubmitted' | 'status'>) => {
+  submitGeneralInquiry: (data: Partial<GeneralInquiry>) => {
     const db = loadDatabase();
+    const now = new Date().toISOString();
+    const refSeq = Math.floor(1000 + Math.random() * 9000);
     const item: GeneralInquiry = {
-      ...data,
       id: `inq-gen-${Date.now()}`,
-      dateSubmitted: new Date().toISOString(),
-      status: 'NEW'
+      referenceNo: `HL-INQ-2026-${refSeq}`,
+      type: data.type || 'GENERAL',
+      fullName: data.fullName || '',
+      email: data.email || '',
+      phone: data.phone || '',
+      company: data.company || '',
+      subject: data.subject || 'Website Inquiry',
+      message: data.message || '',
+      propertyInterest: data.propertyInterest,
+      status: 'NEW',
+      priority: 'MEDIUM',
+      internalNotes: [],
+      followUps: [],
+      createdAt: now,
+      updatedAt: now
     };
     db.generalInquiries.unshift(item);
     saveDatabase(db);
     return item;
   },
-  submitInvestmentInquiry: (data: Omit<InvestmentInquiry, 'id' | 'dateSubmitted' | 'status'>) => {
+  submitInvestmentInquiry: (data: Partial<InvestmentInquiry>) => {
     const db = loadDatabase();
+    const now = new Date().toISOString();
+    const refSeq = Math.floor(1000 + Math.random() * 9000);
     const item: InvestmentInquiry = {
-      ...data,
       id: `inq-inv-${Date.now()}`,
-      dateSubmitted: new Date().toISOString(),
-      status: 'NEW'
+      referenceNo: `HL-INV-2026-${refSeq}`,
+      type: 'INVESTMENT',
+      fullName: data.fullName || '',
+      companyName: data.companyName || '',
+      email: data.email || '',
+      phone: data.phone || '',
+      country: data.country || 'Philippines',
+      investorType: data.investorType || 'Individual Investor',
+      investmentInterest: data.investmentInterest || 'General Corporate Opportunities',
+      preferredProject: data.preferredProject || 'Undecided / Portfolio',
+      indicativeRange: data.indicativeRange || '',
+      message: data.message || '',
+      status: 'NEW',
+      priority: 'HIGH',
+      internalNotes: [],
+      followUps: [],
+      createdAt: now,
+      updatedAt: now
     };
     db.investmentInquiries.unshift(item);
     saveDatabase(db);
     return item;
   },
-  submitLandownerInquiry: (data: Omit<LandownerInquiry, 'id' | 'dateSubmitted' | 'status'>) => {
+  submitLandownerInquiry: (data: Partial<LandownerInquiry>) => {
     const db = loadDatabase();
+    const now = new Date().toISOString();
+    const refSeq = Math.floor(1000 + Math.random() * 9000);
     const item: LandownerInquiry = {
-      ...data,
       id: `inq-lnd-${Date.now()}`,
-      dateSubmitted: new Date().toISOString(),
-      status: 'NEW'
+      referenceNo: `HL-LND-2026-${refSeq}`,
+      type: 'LANDOWNER',
+      fullName: data.fullName || '',
+      email: data.email || '',
+      phone: data.phone || '',
+      propertyLocation: data.propertyLocation || '',
+      landArea: data.landArea || '',
+      currentZoning: data.currentZoning || 'Agricultural',
+      titleStatus: data.titleStatus || 'Clean TCT',
+      proposedArrangement: data.proposedArrangement || 'Joint Venture Development',
+      message: data.message || '',
+      documentCount: data.documentCount || 0,
+      status: 'NEW',
+      priority: 'HIGH',
+      internalNotes: [],
+      followUps: [],
+      createdAt: now,
+      updatedAt: now
     };
     db.landownerInquiries.unshift(item);
     saveDatabase(db);
     return item;
   },
-  updateInquiryStatus: (type: 'general' | 'investment' | 'landowner', id: string, status: any) => {
+  updateInquiry: (type: 'general' | 'investment' | 'landowner', id: string, updates: any) => {
     const db = loadDatabase();
+    const now = new Date().toISOString();
     if (type === 'general') {
       const idx = db.generalInquiries.findIndex(i => i.id === id);
-      if (idx !== -1) db.generalInquiries[idx].status = status;
+      if (idx !== -1) {
+        db.generalInquiries[idx] = { ...db.generalInquiries[idx], ...updates, updatedAt: now };
+        saveDatabase(db);
+        return db.generalInquiries[idx];
+      }
     } else if (type === 'investment') {
       const idx = db.investmentInquiries.findIndex(i => i.id === id);
-      if (idx !== -1) db.investmentInquiries[idx].status = status;
+      if (idx !== -1) {
+        db.investmentInquiries[idx] = { ...db.investmentInquiries[idx], ...updates, updatedAt: now };
+        saveDatabase(db);
+        return db.investmentInquiries[idx];
+      }
     } else if (type === 'landowner') {
       const idx = db.landownerInquiries.findIndex(i => i.id === id);
-      if (idx !== -1) db.landownerInquiries[idx].status = status;
+      if (idx !== -1) {
+        db.landownerInquiries[idx] = { ...db.landownerInquiries[idx], ...updates, updatedAt: now };
+        saveDatabase(db);
+        return db.landownerInquiries[idx];
+      }
     }
-    saveDatabase(db);
-    return true;
+    throw new Error('Inquiry not found');
+  },
+  addFollowUp: (type: 'general' | 'investment' | 'landowner', id: string, notes: string) => {
+    const db = loadDatabase();
+    const followUpRecord = {
+      id: `fu-${Date.now()}`,
+      date: new Date().toISOString(),
+      recordedBy: 'Admin',
+      notes
+    };
+    if (type === 'general') {
+      const item = db.generalInquiries.find(i => i.id === id);
+      if (!item) throw new Error('Inquiry not found');
+      item.followUps = [...(item.followUps || []), followUpRecord];
+      item.status = 'IN_DISCUSSION';
+      saveDatabase(db);
+      return item;
+    } else if (type === 'investment') {
+      const item = db.investmentInquiries.find(i => i.id === id);
+      if (!item) throw new Error('Inquiry not found');
+      item.followUps = [...(item.followUps || []), followUpRecord];
+      item.status = 'IN_DISCUSSION';
+      saveDatabase(db);
+      return item;
+    } else {
+      const item = db.landownerInquiries.find(i => i.id === id);
+      if (!item) throw new Error('Inquiry not found');
+      item.followUps = [...(item.followUps || []), followUpRecord];
+      item.status = 'IN_DISCUSSION';
+      saveDatabase(db);
+      return item;
+    }
   },
 
   // Careers
   getCareers: (all = false): Career[] => {
     const db = loadDatabase();
-    return db.careers.filter(c => all || c.status === 'OPEN');
+    return db.careers.filter(c => all || c.published);
   },
-  submitCareerApplication: (data: Omit<CareerApplication, 'id' | 'dateSubmitted' | 'status'>) => {
+  submitCareerApplication: (data: Partial<CareerApplication>) => {
     const db = loadDatabase();
+    const refSeq = Math.floor(1000 + Math.random() * 9000);
     const item: CareerApplication = {
-      ...data,
       id: `app-${Date.now()}`,
-      dateSubmitted: new Date().toISOString(),
-      status: 'RECEIVED'
+      referenceNo: `HL-APP-2026-${refSeq}`,
+      jobId: data.jobId || '',
+      jobTitle: data.jobTitle || 'Corporate Position',
+      applicantName: data.applicantName || '',
+      email: data.email || '',
+      phone: data.phone || '',
+      linkedin: data.linkedin,
+      portfolio: data.portfolio,
+      coverLetter: data.coverLetter,
+      resumeFileName: data.resumeFileName || 'resume.pdf',
+      status: 'SUBMITTED',
+      createdAt: new Date().toISOString()
     };
     db.careerApplications.unshift(item);
     saveDatabase(db);
@@ -271,15 +379,16 @@ export const clientDb = {
     const newDoc: CorporateDocument = {
       id: `doc-${Date.now()}`,
       title: doc.title || 'Untitled Document',
-      category: doc.category || 'Corporate Governance',
-      classification: doc.classification || 'INTERNAL',
-      referenceNumber: doc.referenceNumber || `HL-DOC-${Date.now().toString().slice(-4)}`,
+      category: doc.category || 'Feasibility Study',
+      confidentiality: doc.confidentiality || 'CONFIDENTIAL',
       fileType: doc.fileType || 'PDF',
       fileSize: doc.fileSize || '1.2 MB',
       fileUrl: doc.fileUrl || '#',
       uploadedBy: doc.uploadedBy || 'Admin',
-      dateUploaded: new Date().toISOString().split('T')[0],
-      downloadable: doc.downloadable ?? true
+      description: doc.description || '',
+      projectId: doc.projectId,
+      projectName: doc.projectName,
+      createdAt: new Date().toISOString()
     };
     db.corporateDocuments.unshift(newDoc);
     saveDatabase(db);
@@ -304,11 +413,11 @@ export const clientDb = {
       title: media.title || 'Untitled Asset',
       category: media.category || 'Project Rendering',
       url: media.url || '',
-      thumbnailUrl: media.thumbnailUrl,
+      alt: media.alt || media.title || 'Corporate Media',
       fileSize: media.fileSize || '2.4 MB',
       dimensions: media.dimensions || '1920x1080',
       uploadedBy: media.uploadedBy || 'Admin',
-      dateUploaded: new Date().toISOString().split('T')[0]
+      createdAt: new Date().toISOString()
     };
     db.mediaLibrary.unshift(newMedia);
     saveDatabase(db);
@@ -322,30 +431,31 @@ export const clientDb = {
   },
 
   // Users
-  getUsers: () => {
+  getUsers: (): User[] => {
     const db = loadDatabase();
-    return db.users.map(({ passwordHash, salt, ...u }) => u);
+    return db.users.map(({ passwordHash, salt, ...u }) => ({
+      ...u,
+      createdAt: u.createdAt || new Date().toISOString()
+    }));
   },
 
   // Stats
   getStats: (): DashboardStats => {
     const db = loadDatabase();
+    const projects = db.projects;
+    const properties = db.properties;
+    const generalInquiries = db.generalInquiries;
     return {
-      totalProjects: db.projects.length,
-      activeProjects: db.projects.filter(p => p.stage !== 'Completed').length,
-      totalProperties: db.properties.length,
-      availableProperties: db.properties.filter(p => p.status === 'AVAILABLE').length,
-      reservedProperties: db.properties.filter(p => p.status === 'RESERVED').length,
-      soldProperties: db.properties.filter(p => p.status === 'SOLD').length,
-      totalInquiries: db.generalInquiries.length + db.investmentInquiries.length + db.landownerInquiries.length,
-      newInquiries: [
-        ...db.generalInquiries,
-        ...db.investmentInquiries,
-        ...db.landownerInquiries
-      ].filter(i => i.status === 'NEW').length,
-      totalDocuments: db.corporateDocuments.length,
-      openCareers: db.careers.filter(c => c.status === 'OPEN').length,
-      totalUsers: db.users.length
+      totalProjects: projects.length,
+      activeProjects: projects.filter(p => p.published && p.stage !== 'Completed' && p.stage !== 'On Hold').length,
+      projectsUnderPlanning: projects.filter(p => p.stage === 'Planning' || p.stage === 'Concept' || p.stage === 'Feasibility').length,
+      publishedProperties: properties.filter(p => p.published).length,
+      propertyInquiries: generalInquiries.filter(i => i.type === 'PROPERTY').length,
+      investmentInquiries: db.investmentInquiries.length,
+      landownerInquiries: db.landownerInquiries.length,
+      contactMessages: generalInquiries.filter(i => i.type === 'GENERAL' || i.type === 'PARTNERSHIP').length,
+      careerApplications: db.careerApplications.length,
+      totalCorporateDocuments: db.corporateDocuments.length
     };
   },
 
@@ -356,13 +466,12 @@ export const clientDb = {
   },
 
   // Auth
-  login: (email: string, pass: string): { token: string; user: User } => {
+  login: (email: string, _pass: string): { token: string; user: User } => {
     const db = loadDatabase();
     const u = db.users.find(user => user.email.toLowerCase() === email.toLowerCase());
     if (!u) {
       throw new Error('Invalid email or password.');
     }
-    // Allow Hopeland#2026! or default password for Superadmin
     const token = `hl_local_token_${Date.now()}`;
     const userSafe: User = {
       id: u.id,
@@ -371,14 +480,14 @@ export const clientDb = {
       role: u.role,
       department: u.department,
       status: u.status,
-      lastLogin: new Date().toISOString()
+      lastLogin: new Date().toISOString(),
+      createdAt: u.createdAt || new Date().toISOString()
     };
     return { token, user: userSafe };
   },
 
-  getCurrentUser: (token: string): User | null => {
+  getCurrentUser: (_token: string): User | null => {
     const db = loadDatabase();
-    // Return first active superadmin if session token exists
     const u = db.users.find(user => user.role === 'SUPER_ADMIN') || db.users[0];
     if (!u) return null;
     return {
@@ -388,7 +497,8 @@ export const clientDb = {
       role: u.role,
       department: u.department,
       status: u.status,
-      lastLogin: u.lastLogin
+      lastLogin: u.lastLogin,
+      createdAt: u.createdAt || new Date().toISOString()
     };
   }
 };
