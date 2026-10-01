@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { MediaItem } from '../../types/index.ts';
 import { api } from '../../services/api.ts';
 import { useAuth } from '../../context/AuthContext.tsx';
+import { OFFICIAL_LOGO_PATH } from '../../components/HopelandLogo.tsx';
+import { getAssetUrl } from '../../utils/assets.ts';
 import {
   Image as ImageIcon,
   Plus,
@@ -91,7 +93,7 @@ export const AdminMediaPage: React.FC = () => {
         <div className="flex items-center gap-5">
           <div className="bg-white p-3 rounded-lg shadow-sm w-24 h-24 shrink-0 flex items-center justify-center">
             <img
-              src="/assets/branding/hopeland-official-logo.png"
+              src={OFFICIAL_LOGO_PATH}
               alt="Hopeland Official Logo"
               className="max-h-full max-w-full object-contain"
             />
@@ -114,7 +116,7 @@ export const AdminMediaPage: React.FC = () => {
 
         <div className="flex items-center gap-3 shrink-0">
           <a
-            href="/assets/branding/hopeland-official-logo.png"
+            href={OFFICIAL_LOGO_PATH}
             download="hopeland-official-logo.png"
             className="px-4 py-2 bg-[#C49A32] hover:bg-[#D8B65B] text-[#0B2345] text-xs font-bold rounded uppercase tracking-wider transition-colors flex items-center gap-1.5 shadow-xs"
           >
@@ -132,7 +134,7 @@ export const AdminMediaPage: React.FC = () => {
               <div>
                 <div className="aspect-[16/10] bg-slate-900 relative overflow-hidden">
                   <img
-                    src={item.url}
+                    src={getAssetUrl(item.url)}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     referrerPolicy="no-referrer"
@@ -154,7 +156,7 @@ export const AdminMediaPage: React.FC = () => {
 
               <div className="p-3 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-xs">
                 <a
-                  href={item.url}
+                  href={getAssetUrl(item.url)}
                   target="_blank"
                   rel="noreferrer"
                   className="text-slate-500 hover:text-[#0B2345] flex items-center gap-1 text-[11px]"

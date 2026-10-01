@@ -12,7 +12,12 @@ import {
   Layers,
   Sparkles
 } from 'lucide-react';
-import { OFFICIAL_LOGO_PATH, OFFICIAL_LOGO_TRANSPARENT_PATH } from '../../components/HopelandLogo.tsx';
+import {
+  OFFICIAL_LOGO_PATH,
+  OFFICIAL_LOGO_TRANSPARENT_PATH,
+  OFFICIAL_LOGO_MASTER_PATH,
+  OFFICIAL_EMBLEM_TRANSPARENT_PATH
+} from '../../components/HopelandLogo.tsx';
 
 interface ColorItem {
   name: string;
@@ -212,8 +217,8 @@ export const AdminBrandingPage: React.FC = () => {
         {/* Direct Download Actions */}
         <div className="flex flex-wrap gap-3 pt-2 border-t border-[#163A63]">
           <a
-            href={OFFICIAL_LOGO_PATH}
-            download="hopeland-official-logo.png"
+            href={OFFICIAL_LOGO_MASTER_PATH}
+            download="hopeland-official-logo-master.png"
             className="px-4 py-2 bg-[#163A63] hover:bg-[#1f4a7a] text-white text-xs font-semibold rounded flex items-center gap-2 transition-colors"
           >
             <Download className="w-3.5 h-3.5 text-[#C49A32]" />
@@ -228,12 +233,12 @@ export const AdminBrandingPage: React.FC = () => {
             <span>Download Transparent PNG</span>
           </a>
           <a
-            href="/favicon.png"
-            download="hopeland-favicon.png"
+            href={OFFICIAL_EMBLEM_TRANSPARENT_PATH}
+            download="hopeland-emblem-transparent.png"
             className="px-4 py-2 bg-[#07172F] hover:bg-[#163A63] text-slate-300 hover:text-white border border-[#163A63] text-xs font-medium rounded flex items-center gap-2 transition-colors"
           >
             <Download className="w-3.5 h-3.5 text-slate-400" />
-            <span>Download Favicon Asset (64px)</span>
+            <span>Download Emblem Asset</span>
           </a>
         </div>
       </div>

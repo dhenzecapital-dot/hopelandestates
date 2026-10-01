@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Project, ProjectCategory, ProjectStage } from '../../types/index.ts';
 import { api } from '../../services/api.ts';
 import { useAuth } from '../../context/AuthContext.tsx';
+import { getAssetUrl } from '../../utils/assets.ts';
 import {
   Building2,
   Plus,
@@ -173,7 +174,7 @@ export const AdminProjectsPage: React.FC = () => {
                   <td className="py-3.5 px-4 font-semibold text-slate-900">
                     <div className="flex items-center gap-3">
                       <img
-                        src={proj.featuredImage}
+                        src={getAssetUrl(proj.featuredImage)}
                         alt={proj.name}
                         className="w-10 h-7 object-cover rounded shrink-0 bg-slate-200"
                       />

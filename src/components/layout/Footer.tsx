@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Col 1: Corporate Brand & Identity */}
           <div className="lg:col-span-2 space-y-4">
             <div className="cursor-pointer inline-block" onClick={() => handleNav('/')}>
-              <HopelandLogo variant="compact" inverted height={54} />
+              <HopelandLogo variant="footer" width={165} height={54} />
             </div>
             <p className="text-xs tracking-wider uppercase font-semibold text-[#D8B65B]">
               Building Strong Foundations for Better Tomorrows.

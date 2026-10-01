@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DashboardStats, ActivityLog } from '../../types/index.ts';
 import { api } from '../../services/api.ts';
+import { OFFICIAL_LOGO_PATH } from '../../components/HopelandLogo.tsx';
 import {
   Building2,
   Home,
@@ -57,7 +58,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onSelect
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 bg-white p-1 rounded-lg border border-slate-200 shadow-xs shrink-0 flex items-center justify-center">
             <img
-              src="/assets/branding/hopeland-official-logo.png"
+              src={OFFICIAL_LOGO_PATH}
               alt="Hopeland Official Logo"
               className="max-h-full max-w-full object-contain"
             />

@@ -10,6 +10,8 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const BASE_PATH = '/hopelandestates';
+
 async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT) || 3000;
@@ -21,8 +23,9 @@ async function startServer() {
   app.use(express.json({ limit: '20mb' }));
   app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
-  // REST API routes mounted under /api
+  // REST API routes mounted under both /api and /hopelandestates/api
   app.use('/api', apiRouter);
+  app.use(`${BASE_PATH}/api`, apiRouter);
 
   if (!isProduction) {
     // Development mode: Vite dev server with middleware mode
@@ -36,10 +39,22 @@ async function startServer() {
       appType: 'spa'
     });
 
+    // Support both root (/) in Google AI Studio preview and /hopelandestates/ base path seamlessly
+    app.use((req, _res, next) => {
+      if (
+        !req.url.startsWith('/api') &&
+        !req.url.startsWith(BASE_PATH)
+      ) {
+        req.url = `${BASE_PATH}${req.url.startsWith('/') ? req.url : '/' + req.url}`;
+      }
+      next();
+    });
+
     app.use(vite.middlewares);
   } else {
-    // Production mode: Serve built client files
+    // Production mode: Serve built client files at both /hopelandestates and /
     const distPath = path.resolve(__dirname, 'dist');
+    app.use(BASE_PATH, express.static(distPath));
     app.use(express.static(distPath));
     app.get('*', (_req, res) => {
       res.sendFile(path.resolve(distPath, 'index.html'));

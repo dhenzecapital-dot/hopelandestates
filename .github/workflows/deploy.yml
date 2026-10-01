@@ -32,18 +32,29 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci || npm install
+          else
+            npm install
+          fi
+
+      - name: Run TypeScript validation
+        run: npm run lint
 
       - name: Build production website
         run: npm run build
 
       - name: Verify deployment output
         run: |
+          touch dist/.nojekyll
           test -f dist/index.html
+          test -f dist/404.html
           test -f dist/logo.svg
+          test -f dist/assets/branding/hopeland-official-logo.png
+          test -f dist/assets/branding/hopeland-official-logo-transparent.png
           echo "Production files verified."
 
       - name: Configure GitHub Pages

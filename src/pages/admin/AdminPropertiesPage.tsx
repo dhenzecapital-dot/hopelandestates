@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Property, PropertyCategory, PropertyStatus } from '../../types/index.ts';
 import { api } from '../../services/api.ts';
 import { useAuth } from '../../context/AuthContext.tsx';
+import { getAssetUrl } from '../../utils/assets.ts';
 import {
   Home,
   Plus,
@@ -166,7 +167,7 @@ export const AdminPropertiesPage: React.FC = () => {
                   <td className="py-3.5 px-4 font-semibold text-slate-900">
                     <div className="flex items-center gap-3">
                       <img
-                        src={prop.featuredImage}
+                        src={getAssetUrl(prop.featuredImage)}
                         alt={prop.title}
                         className="w-10 h-7 object-cover rounded shrink-0 bg-slate-200"
                       />

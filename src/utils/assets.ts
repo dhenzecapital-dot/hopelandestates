@@ -3,14 +3,26 @@
  */
 export const getAssetUrl = (path: string): string => {
   if (!path) return '';
-  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:') || path.startsWith('blob:')) {
+  if (
+    path.startsWith('http://') ||
+    path.startsWith('https://') ||
+    path.startsWith('data:') ||
+    path.startsWith('blob:')
+  ) {
     return path;
   }
 
-  const base = import.meta.env.BASE_URL || '/';
+  const base = import.meta.env.BASE_URL || '/hopelandestates/';
   const cleanBase = base.endsWith('/') ? base : `${base}/`;
 
-  let cleanPath = path;
+  let cleanPath = path.trim();
+
+  // Strip any existing /hopelandestates/ prefix so we don't double-prefix
+  if (cleanPath.startsWith('/hopelandestates/')) {
+    cleanPath = cleanPath.slice('/hopelandestates/'.length);
+  } else if (cleanPath.startsWith('hopelandestates/')) {
+    cleanPath = cleanPath.slice('hopelandestates/'.length);
+  }
 
   // Map legacy /src/assets/images/ to public assets/images/
   if (cleanPath.startsWith('/src/assets/images/')) {

@@ -1,7 +1,12 @@
 import React from 'react';
 
-export const OFFICIAL_LOGO_PATH = `${import.meta.env.BASE_URL}logo.svg`;
-export const OFFICIAL_LOGO_TRANSPARENT_PATH = `${import.meta.env.BASE_URL}logo.svg`;
+const rawBase = import.meta.env.BASE_URL || '/hopelandestates/';
+const normalizedBase = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+
+export const OFFICIAL_LOGO_PATH = `${normalizedBase}assets/branding/hopeland-official-logo.png`;
+export const OFFICIAL_LOGO_TRANSPARENT_PATH = `${normalizedBase}assets/branding/hopeland-official-logo-transparent.png`;
+export const OFFICIAL_LOGO_MASTER_PATH = `${normalizedBase}assets/branding/hopeland-official-logo-master.png`;
+export const OFFICIAL_EMBLEM_TRANSPARENT_PATH = `${normalizedBase}assets/branding/hopeland-emblem-transparent.png`;
 
 interface LogoProps {
   variant?: 'full' | 'header' | 'footer' | 'sidebar' | 'symbol' | 'compact';
@@ -15,88 +20,46 @@ interface LogoProps {
 
 export const HopelandLogo: React.FC<LogoProps> = ({
   variant = 'full',
-  inverted,
   className = '',
   width,
   height,
-  alt = 'Hopeland Estates and Realty Corporation',
-  showBadgeBackground
+  alt = 'Hopeland Estates and Realty Corporation'
 }) => {
-  let defaultWidth = width;
+  let defaultMaxWidth = width;
   let defaultHeight = height;
 
   if (variant === 'header') {
-    defaultWidth = width || 155;
-    defaultHeight = height || 54;
+    defaultMaxWidth = width || 170;
+    defaultHeight = height || 56;
   } else if (variant === 'sidebar') {
-    defaultWidth = width || 150;
-    defaultHeight = height || 50;
+    defaultMaxWidth = width || 155;
+    defaultHeight = height || 48;
   } else if (variant === 'compact') {
-    defaultWidth = width || 160;
+    defaultMaxWidth = width || 160;
     defaultHeight = height || 52;
   } else if (variant === 'footer') {
-    defaultWidth = width || 180;
-    defaultHeight = height || 56;
+    defaultMaxWidth = width || 170;
+    defaultHeight = height || 58;
   } else if (variant === 'symbol') {
-    defaultWidth = width || 48;
-    defaultHeight = height || 48;
-  }
-
-  const image = (
-    <img
-      src={OFFICIAL_LOGO_PATH}
-      alt={alt}
-      className="w-full h-full object-contain"
-      loading="eager"
-      decoding="async"
-    />
-  );
-
-  if (variant === 'header' || variant === 'sidebar' || variant === 'footer') {
-    return (
-      <div
-        className={`inline-flex items-center justify-center bg-white px-2.5 py-1 rounded ${className}`}
-        style={{
-          width: defaultWidth,
-          height: defaultHeight
-        }}
-      >
-        {image}
-      </div>
-    );
-  }
-
-  if (variant === 'compact' || variant === 'symbol') {
-    return (
-      <div
-        className={`inline-flex items-center justify-center ${
-          inverted !== false ? 'bg-white p-1 rounded-md' : ''
-        } ${className}`}
-        style={{
-          width: defaultWidth,
-          height: defaultHeight
-        }}
-      >
-        {image}
-      </div>
-    );
+    defaultMaxWidth = width || 52;
+    defaultHeight = height || 52;
   }
 
   return (
     <div
-      className={`inline-flex items-center justify-center ${
-        showBadgeBackground ? 'bg-white p-2.5 rounded-lg shadow-sm' : ''
-      } ${className}`}
-      style={defaultWidth ? { width: defaultWidth } : undefined}
+      className={`inline-flex items-center justify-center shrink-0 ${className}`}
+      style={{
+        height: defaultHeight ? `${defaultHeight}px` : undefined,
+        maxWidth: defaultMaxWidth ? `${defaultMaxWidth}px` : undefined
+      }}
     >
       <img
         src={OFFICIAL_LOGO_PATH}
         alt={alt}
+        className="h-full w-auto max-w-full object-contain object-center bg-white px-2 py-1 rounded-[3px] block select-none"
         style={{
-          width: defaultWidth || 'auto',
-          height: defaultHeight || 'auto',
-          maxWidth: '100%',
-          objectFit: 'contain'
+          objectFit: 'contain',
+          objectPosition: 'center'
         }}
         loading="eager"
         decoding="async"
