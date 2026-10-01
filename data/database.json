@@ -1,4 +1,4 @@
-export const initialDbData = {
+{
   "users": [
     {
       "id": "usr-superadmin",
@@ -7,9 +7,9 @@ export const initialDbData = {
       "role": "SUPER_ADMIN",
       "department": "Executive Board",
       "status": "ACTIVE",
-      "createdAt": "2026-10-01T18:57:40.373Z",
-      "passwordHash": "eba42165b53c247f6e1ec92e1bb574f99af39e4a14a923a88aff7d07c103cdfc6567f1a42593db6cb7c13f0b82b399e0a1736c5d7d5241f337936ce6187bc35e",
-      "salt": "c968fe874d8c96f835ec0f4e0990db21"
+      "createdAt": "2026-10-01T19:56:48.778Z",
+      "passwordHash": "77a78f00957024f02bf939b5e46dd69bacdb7d0c3efed1ae351a7ea091e5d3d2db3d8e00cf565bb99e0ce1493d7c8357ec55c5ae77e9e2fb53b6a6e88f513b14",
+      "salt": "75b6788093df556e913498ef8dea274e"
     },
     {
       "id": "usr-admin",
@@ -18,9 +18,9 @@ export const initialDbData = {
       "role": "ADMIN",
       "department": "Corporate Administration",
       "status": "ACTIVE",
-      "createdAt": "2026-10-01T18:57:40.374Z",
-      "passwordHash": "77cdd894522b1f7697313a978cc95a14d9878bda1bf96730fb0307e7f00792daa9fdf6ae231554e44927d7f526204efdd207e6a5a2234a6afee9faf118f55837",
-      "salt": "b6d225e8af05cdec98c603d5eb131a80"
+      "createdAt": "2026-10-01T19:56:48.780Z",
+      "passwordHash": "4ab91f23e88639480324333c1b08bb90ba2d34f518ec594eff419077e00bc0dce5e681c0a63c0d01d5b63f3ed784e8f9a008c63f7c45fa0af665c6cb86129e42",
+      "salt": "afa5c19d292011288dfc9d3077081ba4"
     },
     {
       "id": "usr-pm",
@@ -29,9 +29,9 @@ export const initialDbData = {
       "role": "PROJECT_MANAGER",
       "department": "Project Planning & Construction",
       "status": "ACTIVE",
-      "createdAt": "2026-10-01T18:57:40.375Z",
-      "passwordHash": "8f392bc696060298d69df7276f6e76d13b279bc75a550d2fae885c849f65bab86438b3bd6a0204083ffd7fbb6c51a07e5f1b7700fbddf2724f4dce55c59f3db6",
-      "salt": "5cec6404be1e8a3f6243eff67817e1f8"
+      "createdAt": "2026-10-01T19:56:48.781Z",
+      "passwordHash": "f2ae967640076b5bc5babe8f8f2a0ce35e9734108fb57fa5ae239c69066b3813d79d37af2b61104c0c5f95a5d19df9f53bab564950c113494011795625579197",
+      "salt": "d95cefac62741b08778b9cd479cd8443"
     },
     {
       "id": "usr-marketing",
@@ -40,9 +40,9 @@ export const initialDbData = {
       "role": "MARKETING",
       "department": "Sales & Corporate Communications",
       "status": "ACTIVE",
-      "createdAt": "2026-10-01T18:57:40.376Z",
-      "passwordHash": "538585d8f04f7fdaf523cef17eef01bc293c72cda56d0dfaba246c50dd6afd3de5baa2a7a43c1cde0d6eb802a7b6fee4078a4b3a855d3283849e7c22a46c65ee",
-      "salt": "fa4e7a7cff3b500c8d78117a054fe15f"
+      "createdAt": "2026-10-01T19:56:48.783Z",
+      "passwordHash": "77afd20e4900cd4ee7fbe8d3bc775b5055bbeb23cfc93693c444096e3cb3d671a3af23f0e2390bf99040a4987e5be47ae94a245270dc3f604987851267b3f7e6",
+      "salt": "e75983345442194cd823d0cc4968b494"
     },
     {
       "id": "usr-viewer",
@@ -51,9 +51,9 @@ export const initialDbData = {
       "role": "VIEWER",
       "department": "External Audit & Oversight",
       "status": "ACTIVE",
-      "createdAt": "2026-10-01T18:57:40.377Z",
-      "passwordHash": "75690cb5743cd5cb0c2f05c06411d227fc1e87aaa93010c9cee4113204ce09f580b1af16d44d5b6864527c983086e9183cef4eee5e0c35e2e04dd2916edbd81f",
-      "salt": "b6d39fc4633107fd609c2796978d9910"
+      "createdAt": "2026-10-01T19:56:48.784Z",
+      "passwordHash": "fec8ce213015bf2db6ab7a9faf9bf4164cc6b27f2dd2f4c42213b1b03e3255efa06595e1b9e5e475f6945e36603edba43691d6154bcf17005c350fa283d987fd",
+      "salt": "a160b509d0937941db46986275713617"
     }
   ],
   "projects": [
@@ -97,11 +97,11 @@ export const initialDbData = {
         "Jogging & Cycling Trail",
         "24/7 Guardhouse & CCTV Network"
       ],
-      "featuredImage": "assets/images/project_bical_residential_1790880055584.jpg",
-      "masterplanImage": "assets/images/project_bical_residential_1790880055584.jpg",
+      "featuredImage": "/src/assets/images/project_bical_residential_1790880055584.jpg",
+      "masterplanImage": "/src/assets/images/project_bical_residential_1790880055584.jpg",
       "gallery": [
-        "assets/images/project_bical_residential_1790880055584.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "/src/assets/images/project_bical_residential_1790880055584.jpg",
+        "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg"
       ],
       "published": true,
       "featured": true,
@@ -150,11 +150,11 @@ export const initialDbData = {
         "Heavy Logistics Access Arteries",
         "Agronomy Training Center"
       ],
-      "featuredImage": "assets/images/project_taysan_agro_1790880068800.jpg",
-      "masterplanImage": "assets/images/project_taysan_agro_1790880068800.jpg",
+      "featuredImage": "/src/assets/images/project_taysan_agro_1790880068800.jpg",
+      "masterplanImage": "/src/assets/images/project_taysan_agro_1790880068800.jpg",
       "gallery": [
-        "assets/images/project_taysan_agro_1790880068800.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "/src/assets/images/project_taysan_agro_1790880068800.jpg",
+        "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg"
       ],
       "published": true,
       "featured": true,
@@ -200,11 +200,11 @@ export const initialDbData = {
         "Bicycle Commuter Hub with Showers",
         "Direct Highway & Airport Access"
       ],
-      "featuredImage": "assets/images/project_clark_prestige_1790880127374.jpg",
-      "masterplanImage": "assets/images/project_clark_prestige_1790880127374.jpg",
+      "featuredImage": "/src/assets/images/project_clark_prestige_1790880127374.jpg",
+      "masterplanImage": "/src/assets/images/project_clark_prestige_1790880127374.jpg",
       "gallery": [
-        "assets/images/project_clark_prestige_1790880127374.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "/src/assets/images/project_clark_prestige_1790880127374.jpg",
+        "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg"
       ],
       "published": true,
       "featured": true,
@@ -250,11 +250,11 @@ export const initialDbData = {
         "Helipad / Emergency Medical Evacuation Point",
         "Off-Grid Solar Hybrid Storage Backup"
       ],
-      "featuredImage": "assets/images/project_spacenest_resort_1790880149657.jpg",
-      "masterplanImage": "assets/images/project_spacenest_resort_1790880149657.jpg",
+      "featuredImage": "/src/assets/images/project_spacenest_resort_1790880149657.jpg",
+      "masterplanImage": "/src/assets/images/project_spacenest_resort_1790880149657.jpg",
       "gallery": [
-        "assets/images/project_spacenest_resort_1790880149657.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "/src/assets/images/project_spacenest_resort_1790880149657.jpg",
+        "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg"
       ],
       "published": true,
       "featured": true,
@@ -301,11 +301,11 @@ export const initialDbData = {
         "Dietary Kitchen & Private Executive Dining",
         "Full Concierge & Assisted Mobility Fleet"
       ],
-      "featuredImage": "assets/images/hero_hopeland_architecture_1790880040767.jpg",
-      "masterplanImage": "assets/images/hero_hopeland_architecture_1790880040767.jpg",
+      "featuredImage": "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg",
+      "masterplanImage": "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg",
       "gallery": [
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg",
-        "assets/images/project_clark_prestige_1790880127374.jpg"
+        "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg",
+        "/src/assets/images/project_clark_prestige_1790880127374.jpg"
       ],
       "published": true,
       "featured": true,
@@ -334,10 +334,10 @@ export const initialDbData = {
         "Underground Drainage",
         "Clean Title On Hand"
       ],
-      "featuredImage": "assets/images/project_bical_residential_1790880055584.jpg",
+      "featuredImage": "/src/assets/images/project_bical_residential_1790880055584.jpg",
       "images": [
-        "assets/images/project_bical_residential_1790880055584.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "/src/assets/images/project_bical_residential_1790880055584.jpg",
+        "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg"
       ],
       "published": true,
       "createdAt": "2026-06-01T08:00:00Z",
@@ -367,10 +367,10 @@ export const initialDbData = {
         "Covered Lanai",
         "Solar-Ready Roof"
       ],
-      "featuredImage": "assets/images/project_bical_residential_1790880055584.jpg",
+      "featuredImage": "/src/assets/images/project_bical_residential_1790880055584.jpg",
       "images": [
-        "assets/images/project_bical_residential_1790880055584.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "/src/assets/images/project_bical_residential_1790880055584.jpg",
+        "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg"
       ],
       "published": true,
       "createdAt": "2026-06-05T09:30:00Z",
@@ -397,10 +397,10 @@ export const initialDbData = {
         "LEED Target Design",
         "Clark Tax Incentives"
       ],
-      "featuredImage": "assets/images/project_clark_prestige_1790880127374.jpg",
+      "featuredImage": "/src/assets/images/project_clark_prestige_1790880127374.jpg",
       "images": [
-        "assets/images/project_clark_prestige_1790880127374.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "/src/assets/images/project_clark_prestige_1790880127374.jpg",
+        "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg"
       ],
       "published": true,
       "createdAt": "2026-07-01T10:00:00Z",
@@ -429,10 +429,10 @@ export const initialDbData = {
         "Resort Membership Inclusion",
         "Rental Management Option"
       ],
-      "featuredImage": "assets/images/project_spacenest_resort_1790880149657.jpg",
+      "featuredImage": "/src/assets/images/project_spacenest_resort_1790880149657.jpg",
       "images": [
-        "assets/images/project_spacenest_resort_1790880149657.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "/src/assets/images/project_spacenest_resort_1790880149657.jpg",
+        "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg"
       ],
       "published": true,
       "createdAt": "2026-07-15T14:00:00Z",
@@ -684,7 +684,7 @@ export const initialDbData = {
       "id": "med-001",
       "title": "Corporate Architecture Flagship Pavilion",
       "category": "Project Rendering",
-      "url": "assets/images/hero_hopeland_architecture_1790880040767.jpg",
+      "url": "/src/assets/images/hero_hopeland_architecture_1790880040767.jpg",
       "alt": "Hopeland Estates Corporate Flagship Pavilion",
       "fileSize": "1.8 MB",
       "dimensions": "1920x1080",
@@ -695,7 +695,7 @@ export const initialDbData = {
       "id": "med-002",
       "title": "Bikal Residential Boulevard & Villas",
       "category": "Project Rendering",
-      "url": "assets/images/project_bical_residential_1790880055584.jpg",
+      "url": "/src/assets/images/project_bical_residential_1790880055584.jpg",
       "alt": "Bikal Residential Community Subdivision",
       "fileSize": "2.1 MB",
       "dimensions": "1920x1080",
@@ -706,7 +706,7 @@ export const initialDbData = {
       "id": "med-003",
       "title": "Taysan Agro-Industrial Masterplan Estate",
       "category": "Masterplan",
-      "url": "assets/images/project_taysan_agro_1790880068800.jpg",
+      "url": "/src/assets/images/project_taysan_agro_1790880068800.jpg",
       "alt": "Taysan Integrated Masterplanned Development",
       "fileSize": "2.4 MB",
       "dimensions": "1920x1080",
@@ -717,7 +717,7 @@ export const initialDbData = {
       "id": "med-004",
       "title": "Clark Zion Prestige Park Commercial Plaza",
       "category": "Project Rendering",
-      "url": "assets/images/project_clark_prestige_1790880127374.jpg",
+      "url": "/src/assets/images/project_clark_prestige_1790880127374.jpg",
       "alt": "Clark Zion Prestige Commercial Park",
       "fileSize": "1.9 MB",
       "dimensions": "1920x1080",
@@ -728,7 +728,7 @@ export const initialDbData = {
       "id": "med-005",
       "title": "Dhenze SpaceNest Capsule Mountain Resort",
       "category": "Project Rendering",
-      "url": "assets/images/project_spacenest_resort_1790880149657.jpg",
+      "url": "/src/assets/images/project_spacenest_resort_1790880149657.jpg",
       "alt": "Dhenze SpaceNest Mountain Resort Capsule Villas",
       "fileSize": "2.0 MB",
       "dimensions": "1920x1080",
@@ -818,4 +818,4 @@ export const initialDbData = {
       "keywords": "Hopeland Estates, Real Estate Development Philippines, Bikal Residential, Residential Pampanga, Clark Property, Taysan Agro-Industrial"
     }
   }
-};
+}

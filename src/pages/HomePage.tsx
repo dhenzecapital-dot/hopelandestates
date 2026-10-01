@@ -36,9 +36,9 @@ interface FeaturedCardSpec {
 
 const FEATURED_DEVELOPMENT_CARDS: FeaturedCardSpec[] = [
   {
-    id: 'proj-bical',
-    slug: 'bical-residential-development',
-    title: 'Bical Residential',
+    id: 'proj-bikal',
+    slug: 'bikal-residential-development',
+    title: 'Bikal Residential',
     location: 'PAMPANGA',
     description: 'Modern gated living in a thriving community.',
     image: 'assets/images/project_bical_residential_1790880055584.jpg',

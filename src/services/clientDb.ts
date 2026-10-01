@@ -15,7 +15,7 @@ import {
   User
 } from '../types/index.ts';
 
-const DB_STORAGE_KEY = 'hl_client_db_v1';
+const DB_STORAGE_KEY = 'hl_client_db_v3';
 
 interface ClientDatabase {
   users: (User & { passwordHash?: string; salt?: string })[];
@@ -36,7 +36,12 @@ function loadDatabase(): ClientDatabase {
   try {
     const raw = localStorage.getItem(DB_STORAGE_KEY);
     if (raw) {
-      return JSON.parse(raw);
+      const normalizedRaw = raw
+        .replace(/Bical Residential Development/g, 'Bikal Residential')
+        .replace(/Bical Residential/g, 'Bikal Residential')
+        .replace(/Bical, Mabalacat/g, 'Bikal, Mabalacat')
+        .replace(/Bical, Pampanga/g, 'Bikal, Pampanga');
+      return JSON.parse(normalizedRaw);
     }
   } catch (err) {
     console.warn('Failed to parse client database from localStorage:', err);
@@ -76,7 +81,8 @@ export const clientDb = {
   },
   getProjectBySlug: (slug: string): Project | undefined => {
     const db = loadDatabase();
-    return db.projects.find(p => p.slug === slug || p.id === slug);
+    const altSlug = slug.includes('bical') ? slug.replace(/bical/g, 'bikal') : slug.replace(/bikal/g, 'bical');
+    return db.projects.find(p => p.slug === slug || p.slug === altSlug || p.id === slug);
   },
   createProject: (data: Partial<Project>): Project => {
     const db = loadDatabase();
@@ -137,7 +143,8 @@ export const clientDb = {
   },
   getPropertyBySlug: (slug: string): Property | undefined => {
     const db = loadDatabase();
-    return db.properties.find(p => p.slug === slug || p.id === slug);
+    const altSlug = slug.includes('bical') ? slug.replace(/bical/g, 'bikal') : slug.replace(/bikal/g, 'bical');
+    return db.properties.find(p => p.slug === slug || p.slug === altSlug || p.id === slug);
   },
   createProperty: (data: Partial<Property>): Property => {
     const db = loadDatabase();

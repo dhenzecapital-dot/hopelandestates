@@ -222,7 +222,7 @@ export const AdminDocumentsPage: React.FC = () => {
                   type="text"
                   value={projectName}
                   onChange={(e) => setProjectName(e.target.value)}
-                  placeholder="e.g. Bical Residential Development"
+                  placeholder="e.g. Bikal Residential"
                   className="w-full px-3 py-2 border border-slate-300 rounded focus:border-[#C49A32] focus:outline-none"
                 />
               </div>

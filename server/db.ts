@@ -44,7 +44,7 @@ export interface DatabaseSchema {
 
 // Initial seed images generated
 const HERO_IMG = '/src/assets/images/hero_hopeland_architecture_1790880040767.jpg';
-const BICAL_IMG = '/src/assets/images/project_bical_residential_1790880055584.jpg';
+const BIKAL_IMG = '/src/assets/images/project_bical_residential_1790880055584.jpg';
 const TAYSAN_IMG = '/src/assets/images/project_taysan_agro_1790880068800.jpg';
 const CLARK_IMG = '/src/assets/images/project_clark_prestige_1790880127374.jpg';
 const SPACENEST_IMG = '/src/assets/images/project_spacenest_resort_1790880149657.jpg';
@@ -88,16 +88,16 @@ const initialWebsiteContent: WebsiteContent = {
   seo: {
     metaTitle: 'Hopeland Estates and Realty Corporation | Official Corporate Portal',
     metaDescription: 'Building Strong Foundations for Better Tomorrows. Masterplanned residential, commercial, and agro-industrial developments in Pampanga, Batangas, and Rizal.',
-    keywords: 'Hopeland Estates, Real Estate Development Philippines, Residential Pampanga, Clark Property, Taysan Agro-Industrial'
+    keywords: 'Hopeland Estates, Real Estate Development Philippines, Bikal Residential, Residential Pampanga, Clark Property, Taysan Agro-Industrial'
   }
 };
 
 const initialProjects: Project[] = [
   {
-    id: 'proj-bical-01',
-    slug: 'bical-residential-development',
-    name: 'Bical Residential Development',
-    location: 'Bical, Mabalacat, Pampanga',
+    id: 'proj-bikal-01',
+    slug: 'bikal-residential-development',
+    name: 'Bikal Residential',
+    location: 'Bikal, Mabalacat, Pampanga',
     category: 'Residential',
     stage: 'Planning',
     statusText: 'Preliminary Development Information — Verification Required',
@@ -133,9 +133,9 @@ const initialProjects: Project[] = [
       'Jogging & Cycling Trail',
       '24/7 Guardhouse & CCTV Network'
     ],
-    featuredImage: BICAL_IMG,
-    masterplanImage: BICAL_IMG,
-    gallery: [BICAL_IMG, HERO_IMG],
+    featuredImage: BIKAL_IMG,
+    masterplanImage: BIKAL_IMG,
+    gallery: [BIKAL_IMG, HERO_IMG],
     published: true,
     featured: true,
     order: 1,
@@ -338,12 +338,12 @@ const initialProjects: Project[] = [
 
 const initialProperties: Property[] = [
   {
-    id: 'prop-bical-01',
-    slug: 'bical-lot-block-1-lot-12',
-    title: 'Bical Residential Premier Lot (400 sqm)',
-    projectId: 'proj-bical-01',
-    projectName: 'Bical Residential Development',
-    location: 'Block 1, Lot 12, Bical, Mabalacat, Pampanga',
+    id: 'prop-bikal-01',
+    slug: 'bikal-lot-block-1-lot-12',
+    title: 'Bikal Residential Premier Lot (400 sqm)',
+    projectId: 'proj-bikal-01',
+    projectName: 'Bikal Residential',
+    location: 'Block 1, Lot 12, Bikal, Mabalacat, Pampanga',
     category: 'Residential Lot',
     status: 'Available',
     lotArea: 400,
@@ -351,19 +351,19 @@ const initialProperties: Property[] = [
     currency: 'PHP',
     description: 'Prime regular-cut corner residential lot fronting the primary boulevard with unobstructed eastern morning sunrise orientation.',
     features: ['Corner Lot', 'Near Main Clubhouse', 'Underground Drainage', 'Clean Title On Hand'],
-    featuredImage: BICAL_IMG,
-    images: [BICAL_IMG, HERO_IMG],
+    featuredImage: BIKAL_IMG,
+    images: [BIKAL_IMG, HERO_IMG],
     published: true,
     createdAt: '2026-06-01T08:00:00Z',
     updatedAt: '2026-09-10T11:00:00Z'
   },
   {
-    id: 'prop-bical-02',
-    slug: 'bical-modern-tropical-villa-a',
+    id: 'prop-bikal-02',
+    slug: 'bikal-modern-tropical-villa-a',
     title: 'Modern Tropical Executive Villa (House & Lot)',
-    projectId: 'proj-bical-01',
-    projectName: 'Bical Residential Development',
-    location: 'Bical, Mabalacat, Pampanga',
+    projectId: 'proj-bikal-01',
+    projectName: 'Bikal Residential',
+    location: 'Bikal, Mabalacat, Pampanga',
     category: 'House and Lot',
     status: 'Under Development',
     lotArea: 400,
@@ -375,8 +375,8 @@ const initialProperties: Property[] = [
     currency: 'PHP',
     description: 'Signature two-storey modern tropical residence featuring double-height ceiling living room, master suite with walk-in closet, maid quarters, and landscaped lanai.',
     features: ['4 Bedrooms Ensuite', 'High Ceilings', '2-Car Garage', 'Covered Lanai', 'Solar-Ready Roof'],
-    featuredImage: BICAL_IMG,
-    images: [BICAL_IMG, HERO_IMG],
+    featuredImage: BIKAL_IMG,
+    images: [BIKAL_IMG, HERO_IMG],
     published: true,
     createdAt: '2026-06-05T09:30:00Z',
     updatedAt: '2026-09-15T15:00:00Z'
@@ -455,9 +455,9 @@ const initialGeneralInquiries: GeneralInquiry[] = [
     fullName: 'Dr. Evelyn Ramirez',
     email: 'dr.ramirez@medicare.ph',
     phone: '+63 920 888 4567',
-    subject: 'Inquiry for Bical Residential House & Lot',
-    message: 'Interested in the modern tropical villa package at Bical, Pampanga. Please send the payment schedule and lot layout options.',
-    propertyInterest: 'Bical Residential Premier Lot (400 sqm)',
+    subject: 'Inquiry for Bikal Residential House & Lot',
+    message: 'Interested in the modern tropical villa package at Bikal, Pampanga. Please send the payment schedule and lot layout options.',
+    propertyInterest: 'Bikal Residential Premier Lot (400 sqm)',
     status: 'IN_DISCUSSION',
     priority: 'MEDIUM',
     assignedTo: 'Maria Gomez (Marketing)',
@@ -616,16 +616,16 @@ const initialCareers: Career[] = [
 const initialCorporateDocuments: CorporateDocument[] = [
   {
     id: 'doc-001',
-    title: 'Bical Residential Subdivision Master Development Plan (Rev C)',
+    title: 'Bikal Residential Subdivision Master Development Plan (Rev C)',
     category: 'Architectural Drawing',
     confidentiality: 'CONFIDENTIAL',
     fileSize: '14.8 MB',
     fileType: 'PDF / CAD',
-    fileUrl: '/documents/bical_masterplan_rev_c.pdf',
+    fileUrl: '/documents/bikal_masterplan_rev_c.pdf',
     uploadedBy: 'Arch. Raymond Luna',
     description: 'Approved horizontal subdivision lotting plan, road profiles, and drainage elevation survey.',
-    projectId: 'proj-bical-01',
-    projectName: 'Bical Residential Development',
+    projectId: 'proj-bikal-01',
+    projectName: 'Bikal Residential',
     createdAt: '2026-07-10T14:00:00Z'
   },
   {
@@ -672,10 +672,10 @@ const initialMediaLibrary: MediaItem[] = [
   },
   {
     id: 'med-002',
-    title: 'Bical Residential Boulevard & Villas',
+    title: 'Bikal Residential Boulevard & Villas',
     category: 'Project Rendering',
-    url: BICAL_IMG,
-    alt: 'Bical Residential Community Subdivision',
+    url: BIKAL_IMG,
+    alt: 'Bikal Residential Community Subdivision',
     fileSize: '2.1 MB',
     dimensions: '1920x1080',
     uploadedBy: 'System',
@@ -736,8 +736,8 @@ const initialActivityLogs: ActivityLog[] = [
     userRole: 'ADMIN',
     action: 'STATUS_UPDATE',
     entity: 'PROJECT',
-    entityId: 'proj-bical-01',
-    details: 'Updated Bical Residential Development lot inventory and house-and-lot specifications.',
+    entityId: 'proj-bikal-01',
+    details: 'Updated Bikal Residential lot inventory and house-and-lot specifications.',
     ipAddress: '127.0.0.1'
   }
 ];
@@ -830,7 +830,8 @@ class DatabaseService {
   }
 
   public getProjectBySlug(slug: string): Project | undefined {
-    return this.data.projects.find(p => p.slug === slug || p.id === slug);
+    const altSlug = slug.includes('bical') ? slug.replace(/bical/g, 'bikal') : slug.replace(/bikal/g, 'bical');
+    return this.data.projects.find(p => p.slug === slug || p.slug === altSlug || p.id === slug);
   }
 
   public saveProject(project: Project): Project {
@@ -862,7 +863,8 @@ class DatabaseService {
   }
 
   public getPropertyBySlug(slug: string): Property | undefined {
-    return this.data.properties.find(p => p.slug === slug || p.id === slug);
+    const altSlug = slug.includes('bical') ? slug.replace(/bical/g, 'bikal') : slug.replace(/bikal/g, 'bical');
+    return this.data.properties.find(p => p.slug === slug || p.slug === altSlug || p.id === slug);
   }
 
   public saveProperty(property: Property): Property {

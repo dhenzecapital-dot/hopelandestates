@@ -24,7 +24,7 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
   const [country, setCountry] = useState('Philippines');
   const [investorType, setInvestorType] = useState<InvestorType>('Individual Investor');
   const [investmentInterest, setInvestmentInterest] = useState('Residential Masterplanned Developments');
-  const [preferredProject, setPreferredProject] = useState('Bical Residential Development (Pampanga)');
+  const [preferredProject, setPreferredProject] = useState('Bikal Residential (Pampanga)');
   const [indicativeRange, setIndicativeRange] = useState('PHP 20M - PHP 50M');
   const [message, setMessage] = useState('');
 
@@ -314,7 +314,7 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
                         onChange={(e) => setPreferredProject(e.target.value)}
                         className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
                       >
-                        <option value="Bical Residential Development (Pampanga)">Bical Residential (Pampanga)</option>
+                        <option value="Bikal Residential (Pampanga)">Bikal Residential (Pampanga)</option>
                         <option value="Taysan Integrated Masterplanned Development (Batangas)">Taysan Agro Estate (Batangas)</option>
                         <option value="Clark Zion Prestige Park (Clark, Pampanga)">Clark Zion Prestige Park (Clark)</option>
                         <option value="Dhenze SpaceNest Mountain Resort (Rizal)">SpaceNest Mountain Resort (Rizal)</option>

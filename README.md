@@ -13,7 +13,7 @@ Official digital corporate presence and centralized administrative management pl
   - Executive Homepage with high-fidelity architectural imagery, logo branding, and live database metrics.
   - Comprehensive Corporate Overview, Vision, Mission, and Core Values.
   - 10 Dedicated Business Divisions (Real Estate Development, Residential, Commercial, Mixed-Use, Engineering, Land Acquisition, Marketing, Property Management, Joint Ventures, Hospitality).
-  - Dynamic Project Portfolio with Category Filters and Project Detail Dossiers (Bical Residential, Taysan Agro-Industrial, Clark Zion Prestige Park, Dhenze SpaceNest Mountain Resort, Integrated Elderly Care Facility).
+  - Dynamic Project Portfolio with Category Filters and Project Detail Dossiers (Bikal Residential, Taysan Agro-Industrial, Clark Zion Prestige Park, Dhenze SpaceNest Mountain Resort, Integrated Elderly Care Facility).
   - Property Inventory Catalog with Search, Price Filters, and Lot/Floor Area Metrics.
   - Section 6 Investor Inquiry Platform with Automated Reference Generation (`HL-INV-2026-XXXX`).
   - Landowner Partnership Co-Development Evaluation Interface (`HL-LND-2026-XXXX`).

@@ -105,8 +105,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h3>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <button onClick={() => handleNav('/projects/bical-residential-development')} className="hover:text-[#D8B65B] transition-colors text-left">
-                  Bical Residential (Pampanga)
+                <button onClick={() => handleNav('/projects/bikal-residential-development')} className="hover:text-[#D8B65B] transition-colors text-left">
+                  Bikal Residential (Pampanga)
                 </button>
               </li>
               <li>
