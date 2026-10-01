@@ -74,13 +74,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
       {/* 2. MAIN NAVIGATION BAR */}
       <div className="w-full border-b border-white/[0.08]">
         <div className="w-full max-w-[1680px] mx-auto px-6 sm:px-8 lg:px-10 xl:px-12 h-[84px] flex items-center justify-between gap-4 lg:gap-8">
-          {/* LEFT: Official HopeLand Logo (Width ~155px, within 145–165px range, original aspect ratio preserved) */}
+          {/* LEFT: Official HopeLand Logo */}
           <button
             onClick={() => handleNav('/')}
-            className="shrink-0 flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49A32] rounded py-1 transition-opacity hover:opacity-95"
+            className="shrink-0 flex items-center focus:outline-none py-1 transition-opacity hover:opacity-95"
             aria-label="Hopeland Estates and Realty Corporation Home"
           >
-            <HopelandLogo variant="header" inverted width={155} />
+            <HopelandLogo variant="header" />
           </button>
 
           {/* CENTER: 9 Clean Nav Links (Displayed on desktop screens with ample breathing room, gap 20-28px) */}
@@ -116,7 +116,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
             {/* Primary Action: Gold-filled CTA */}
             <button
               onClick={() => handleNav('/investment')}
-              className="h-[40px] px-5 bg-[#C49A32] hover:bg-[#D8B65B] text-[#0B2345] text-xs font-semibold uppercase tracking-wider rounded transition-colors shadow-xs whitespace-nowrap flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="h-[40px] px-5 bg-[#C49A32] hover:bg-[#D8B65B] text-[#0B2345] text-xs font-semibold uppercase tracking-wider rounded transition-colors shadow-xs whitespace-nowrap flex items-center gap-1.5 focus:outline-none"
             >
               <span>Partner With Us</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -125,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
             {/* Secondary Action: Restrained Staff Access */}
             <button
               onClick={() => handleNav(user ? '/admin' : '/admin/login')}
-              className="h-[40px] px-4 bg-transparent hover:bg-white/[0.08] text-slate-200 hover:text-white border border-slate-400/40 hover:border-slate-200 rounded text-xs font-medium tracking-wide transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C49A32]"
+              className="h-[40px] px-4 bg-transparent hover:bg-white/[0.08] text-slate-200 hover:text-white border border-slate-400/40 hover:border-slate-200 rounded text-xs font-medium tracking-wide transition-colors whitespace-nowrap focus:outline-none"
             >
               {user ? 'Admin Console' : 'Staff Access'}
             </button>

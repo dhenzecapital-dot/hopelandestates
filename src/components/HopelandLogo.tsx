@@ -2,6 +2,7 @@ import React from 'react';
 
 export const OFFICIAL_LOGO_PATH = '/assets/branding/hopeland-official-logo.png';
 export const OFFICIAL_LOGO_TRANSPARENT_PATH = '/assets/branding/hopeland-official-logo-transparent.png';
+export const OFFICIAL_EMBLEM_PATH = '/assets/branding/hopeland-emblem-transparent.png';
 
 interface LogoProps {
   variant?: 'full' | 'header' | 'footer' | 'sidebar' | 'symbol' | 'compact';
@@ -27,114 +28,107 @@ export const HopelandLogo: React.FC<LogoProps> = ({
   let defaultHeight = height;
 
   if (variant === 'header') {
-    defaultWidth = width || 155;
-    defaultHeight = height || 54;
+    defaultWidth = width || 165;
+    defaultHeight = height || 50;
   } else if (variant === 'sidebar') {
     defaultWidth = width || 150;
-    defaultHeight = height || 50;
+    defaultHeight = height || 42;
   } else if (variant === 'compact') {
     defaultWidth = width || 160;
-    defaultHeight = height || 52;
+    defaultHeight = height || 44;
   } else if (variant === 'footer') {
-    defaultWidth = width || 180;
-    defaultHeight = height || 56;
-  } else if (variant === 'symbol') {
-    defaultWidth = width || 48;
+    defaultWidth = width || 170;
     defaultHeight = height || 48;
+  } else if (variant === 'symbol') {
+    defaultWidth = width || 46;
+    defaultHeight = height || 46;
   }
 
-  // Header display: on dark navy header, displaying inside an elegant crisp white container
-  // ensures the official navy and gold colors remain 100% authentic without clipping or color mutation.
+  // Header display: directly against navy background with zero card/box/border clutter.
+  // Perfectly proportioned horizontal lockup: official emblem on the left, refined company typography on the right.
+  // Target dimensions: width 150-175px, height 48-56px.
   if (variant === 'header') {
     return (
-      <div
-        className={`inline-flex items-center justify-center bg-white px-2.5 py-1 rounded shadow-xs transition-opacity hover:opacity-95 ${className}`}
-        style={{ width: defaultWidth ? `${defaultWidth}px` : '155px', height: '56px' }}
-      >
+      <div className={`inline-flex items-center gap-2.5 sm:gap-3 select-none text-left shrink-0 ${className}`}>
         <img
-          src={OFFICIAL_LOGO_PATH}
-          alt={alt}
-          className="w-full h-full object-contain"
+          src={OFFICIAL_EMBLEM_PATH}
+          alt="Hopeland Architectural Emblem"
+          style={{ height: defaultHeight ? `${defaultHeight}px` : '50px' }}
+          className="w-auto object-contain shrink-0"
           loading="eager"
           decoding="async"
         />
+        <div className="flex flex-col justify-center leading-none shrink-0">
+          <span className="font-serif font-bold text-white text-[16.5px] sm:text-[17.5px] tracking-[0.14em] leading-tight drop-shadow-xs">
+            HOPELAND
+          </span>
+          <span className="font-serif font-semibold text-[#D8B65B] text-[8px] sm:text-[8.5px] tracking-[0.18em] uppercase leading-tight mt-0.5">
+            ESTATES AND REALTY CORPORATION
+          </span>
+        </div>
       </div>
     );
   }
 
-  // Sidebar display: for admin console sidebar
-  if (variant === 'sidebar') {
+  // Compact / Sidebar display: for admin console sidebar and mobile headers
+  if (variant === 'sidebar' || variant === 'compact') {
     return (
-      <div
-        className={`inline-flex items-center justify-center bg-white px-2 py-1 rounded shadow-xs ${className}`}
-        style={{ width: defaultWidth ? `${defaultWidth}px` : '150px', height: defaultHeight ? `${defaultHeight}px` : '50px' }}
-      >
+      <div className={`inline-flex items-center gap-2.5 select-none text-left shrink-0 ${className}`}>
         <img
-          src={OFFICIAL_LOGO_PATH}
-          alt={alt}
-          className="w-full h-full object-contain"
+          src={OFFICIAL_EMBLEM_PATH}
+          alt="Hopeland Emblem"
+          style={{ height: defaultHeight ? `${defaultHeight}px` : '42px' }}
+          className="w-auto object-contain shrink-0"
           loading="eager"
         />
+        <div className="flex flex-col justify-center leading-none shrink-0">
+          <span className="font-serif font-bold text-white text-[14.5px] tracking-[0.14em] leading-tight">
+            HOPELAND
+          </span>
+          <span className="font-serif font-semibold text-[#D8B65B] text-[7.5px] tracking-[0.16em] uppercase leading-tight mt-0.5">
+            ESTATES AND REALTY CORPORATION
+          </span>
+        </div>
       </div>
     );
   }
 
-  // Compact display: used in footer, login header, and mobile admin header
-  if (variant === 'compact') {
-    const isDarkBg = inverted !== false;
-    return (
-      <div
-        className={`inline-flex items-center justify-center ${isDarkBg ? 'bg-white px-2.5 py-1.5 rounded shadow-xs' : ''} ${className}`}
-        style={{
-          width: defaultWidth ? `${defaultWidth}px` : '160px',
-          height: defaultHeight ? `${defaultHeight}px` : '52px'
-        }}
-      >
-        <img
-          src={OFFICIAL_LOGO_PATH}
-          alt={alt}
-          className="w-full h-full object-contain"
-          loading="eager"
-        />
-      </div>
-    );
-  }
-
-  // Footer display
+  // Footer display: seamless integration directly on dark navy footer
   if (variant === 'footer') {
     return (
-      <div
-        className={`inline-flex items-center justify-center bg-white px-3 py-1.5 rounded shadow-xs ${className}`}
-        style={{
-          width: defaultWidth ? `${defaultWidth}px` : '180px',
-          height: defaultHeight ? `${defaultHeight}px` : '56px'
-        }}
-      >
+      <div className={`inline-flex items-center gap-3 select-none text-left shrink-0 ${className}`}>
         <img
-          src={OFFICIAL_LOGO_PATH}
-          alt={alt}
-          className="w-full h-full object-contain"
+          src={OFFICIAL_EMBLEM_PATH}
+          alt="Hopeland Emblem"
+          style={{ height: defaultHeight ? `${defaultHeight}px` : '48px' }}
+          className="w-auto object-contain shrink-0"
           loading="eager"
         />
+        <div className="flex flex-col justify-center leading-none shrink-0">
+          <span className="font-serif font-bold text-white text-[16px] tracking-[0.14em] leading-tight">
+            HOPELAND
+          </span>
+          <span className="font-serif font-semibold text-[#D8B65B] text-[8px] tracking-[0.18em] uppercase leading-tight mt-0.5">
+            ESTATES AND REALTY CORPORATION
+          </span>
+        </div>
       </div>
     );
   }
 
-  // Standalone Symbol / icon
+  // Standalone Symbol: clean architectural mark with transparent background
   if (variant === 'symbol') {
-    const isDarkBg = inverted !== false;
     return (
-      <div
-        className={`inline-flex items-center justify-center ${isDarkBg ? 'bg-white p-1 rounded-md shadow-xs' : ''} ${className}`}
-        style={{
-          width: defaultWidth ? `${defaultWidth}px` : '48px',
-          height: defaultHeight ? `${defaultHeight}px` : '48px'
-        }}
-      >
+      <div className={`inline-flex items-center justify-center shrink-0 ${className}`}>
         <img
-          src={OFFICIAL_LOGO_PATH}
+          src={OFFICIAL_EMBLEM_PATH}
           alt={alt}
-          className="w-full h-full object-contain"
+          style={{
+            height: defaultHeight ? `${defaultHeight}px` : '46px',
+            width: defaultWidth ? `${defaultWidth}px` : 'auto',
+            objectFit: 'contain'
+          }}
+          className="max-h-full max-w-full"
           loading="eager"
         />
       </div>
@@ -144,11 +138,11 @@ export const HopelandLogo: React.FC<LogoProps> = ({
   // Default / Full rendering: pristine responsive image adhering to Section 2 rules
   return (
     <div
-      className={`inline-flex items-center justify-center ${showBadgeBackground ? 'bg-white p-2.5 rounded-lg shadow-sm' : ''} ${className}`}
+      className={`inline-flex items-center justify-center shrink-0 ${showBadgeBackground ? 'bg-white p-3 rounded-lg shadow-sm' : ''} ${className}`}
       style={defaultWidth ? { width: `${defaultWidth}px` } : undefined}
     >
       <img
-        src={OFFICIAL_LOGO_PATH}
+        src={showBadgeBackground ? OFFICIAL_LOGO_PATH : OFFICIAL_LOGO_TRANSPARENT_PATH}
         alt={alt}
         style={{
           width: defaultWidth ? `${defaultWidth}px` : 'auto',
@@ -162,3 +156,4 @@ export const HopelandLogo: React.FC<LogoProps> = ({
     </div>
   );
 };
+
