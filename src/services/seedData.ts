@@ -97,11 +97,12 @@ export const initialDbData = {
         "Jogging & Cycling Trail",
         "24/7 Guardhouse & CCTV Network"
       ],
-      "featuredImage": "assets/images/project_bical_residential_1790880055584.jpg",
-      "masterplanImage": "assets/images/project_bical_residential_1790880055584.jpg",
+      "featuredImage": "images/projects/bikal-residential-pampanga.jpg",
+      "masterplanImage": "images/services/architectural-masterplanning-model.jpg",
       "gallery": [
-        "assets/images/project_bical_residential_1790880055584.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "images/projects/bikal-residential-pampanga.jpg",
+        "images/properties/bikal-modern-tropical-executive-villa.jpg",
+        "images/services/architectural-masterplanning-model.jpg"
       ],
       "published": true,
       "featured": true,
@@ -301,11 +302,11 @@ export const initialDbData = {
         "Dietary Kitchen & Private Executive Dining",
         "Full Concierge & Assisted Mobility Fleet"
       ],
-      "featuredImage": "assets/images/hero_hopeland_architecture_1790880040767.jpg",
-      "masterplanImage": "assets/images/hero_hopeland_architecture_1790880040767.jpg",
+      "featuredImage": "images/projects/integrated-elderly-care-campus.jpg",
+      "masterplanImage": "images/services/architectural-masterplanning-model.jpg",
       "gallery": [
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg",
-        "assets/images/project_clark_prestige_1790880127374.jpg"
+        "images/projects/integrated-elderly-care-campus.jpg",
+        "images/about/institutional-corporate-stewardship.jpg"
       ],
       "published": true,
       "featured": true,
@@ -334,10 +335,10 @@ export const initialDbData = {
         "Underground Drainage",
         "Clean Title On Hand"
       ],
-      "featuredImage": "assets/images/project_bical_residential_1790880055584.jpg",
+      "featuredImage": "images/properties/bikal-premier-residential-lot.jpg",
       "images": [
-        "assets/images/project_bical_residential_1790880055584.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "images/properties/bikal-premier-residential-lot.jpg",
+        "images/landowners/contiguous-philippine-landholding-survey.jpg"
       ],
       "published": true,
       "createdAt": "2026-06-01T08:00:00Z",
@@ -367,10 +368,10 @@ export const initialDbData = {
         "Covered Lanai",
         "Solar-Ready Roof"
       ],
-      "featuredImage": "assets/images/project_bical_residential_1790880055584.jpg",
+      "featuredImage": "images/properties/bikal-modern-tropical-executive-villa.jpg",
       "images": [
-        "assets/images/project_bical_residential_1790880055584.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "images/properties/bikal-modern-tropical-executive-villa.jpg",
+        "images/projects/bikal-residential-pampanga.jpg"
       ],
       "published": true,
       "createdAt": "2026-06-05T09:30:00Z",
@@ -397,10 +398,10 @@ export const initialDbData = {
         "LEED Target Design",
         "Clark Tax Incentives"
       ],
-      "featuredImage": "assets/images/project_clark_prestige_1790880127374.jpg",
+      "featuredImage": "images/properties/clark-prestige-grade-a-office-floor.jpg",
       "images": [
-        "assets/images/project_clark_prestige_1790880127374.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "images/properties/clark-prestige-grade-a-office-floor.jpg",
+        "images/projects/clark-zion-prestige-park.jpg"
       ],
       "published": true,
       "createdAt": "2026-07-01T10:00:00Z",
@@ -429,14 +430,42 @@ export const initialDbData = {
         "Resort Membership Inclusion",
         "Rental Management Option"
       ],
-      "featuredImage": "assets/images/project_spacenest_resort_1790880149657.jpg",
+      "featuredImage": "images/properties/spacenest-horizon-capsule-villa.jpg",
       "images": [
-        "assets/images/project_spacenest_resort_1790880149657.jpg",
-        "assets/images/hero_hopeland_architecture_1790880040767.jpg"
+        "images/properties/spacenest-horizon-capsule-villa.jpg",
+        "images/home/masterplanned-philippine-development-hero.jpg"
       ],
       "published": true,
       "createdAt": "2026-07-15T14:00:00Z",
       "updatedAt": "2026-09-22T08:00:00Z"
+    },
+    {
+      "id": "prop-taysan-01",
+      "slug": "taysan-agro-industrial-development-parcel",
+      "title": "Taysan Agro-Industrial Development Parcel (2.5 Hectares)",
+      "projectId": "proj-taysan-02",
+      "projectName": "Taysan Integrated Masterplanned Development",
+      "location": "Taysan Growth Corridor, Batangas",
+      "category": "Commercial Space",
+      "status": "Under Development",
+      "lotArea": 25000,
+      "price": 37500000,
+      "currency": "PHP",
+      "description": "Contiguous development-ready agricultural and eco-industrial land parcel with direct arterial road access, surveyed boundaries, and solar-ready topography.",
+      "features": [
+        "Surveyed Contiguous Parcel",
+        "Arterial Road Access",
+        "Agro-Industrial Zoning",
+        "Renewable Energy Ready"
+      ],
+      "featuredImage": "images/landowners/contiguous-philippine-landholding-survey.jpg",
+      "images": [
+        "images/landowners/contiguous-philippine-landholding-survey.jpg",
+        "images/projects/taysan-agro-industrial-estate.jpg"
+      ],
+      "published": true,
+      "createdAt": "2026-08-01T10:00:00Z",
+      "updatedAt": "2026-09-25T14:00:00Z"
     }
   ],
   "generalInquiries": [

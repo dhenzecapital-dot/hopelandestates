@@ -43,11 +43,17 @@ export interface DatabaseSchema {
 }
 
 // Initial seed images generated
-const HERO_IMG = '/src/assets/images/hero_hopeland_architecture_1790880040767.jpg';
-const BIKAL_IMG = '/src/assets/images/project_bical_residential_1790880055584.jpg';
-const TAYSAN_IMG = '/src/assets/images/project_taysan_agro_1790880068800.jpg';
-const CLARK_IMG = '/src/assets/images/project_clark_prestige_1790880127374.jpg';
-const SPACENEST_IMG = '/src/assets/images/project_spacenest_resort_1790880149657.jpg';
+const HERO_IMG = 'images/home/masterplanned-philippine-development-hero.jpg';
+const BIKAL_IMG = 'images/projects/bikal-residential-pampanga.jpg';
+const TAYSAN_IMG = 'images/projects/taysan-agro-industrial-estate.jpg';
+const CLARK_IMG = 'images/projects/clark-zion-prestige-park.jpg';
+const SPACENEST_IMG = 'images/projects/dhenze-spacenest-mountain-resort.jpg';
+const ELDERLY_CARE_IMG = 'images/projects/integrated-elderly-care-campus.jpg';
+const VILLA_IMG = 'images/properties/bikal-modern-tropical-executive-villa.jpg';
+const OFFICE_FLOOR_IMG = 'images/properties/clark-prestige-grade-a-office-floor.jpg';
+const SURVEY_LAND_IMG = 'images/landowners/contiguous-philippine-landholding-survey.jpg';
+const MASTERPLAN_MODEL_IMG = 'images/services/architectural-masterplanning-model.jpg';
+const ABOUT_STEWARDSHIP_IMG = 'images/about/institutional-corporate-stewardship.jpg';
 
 const initialWebsiteContent: WebsiteContent = {
   hero: {
@@ -134,8 +140,8 @@ const initialProjects: Project[] = [
       '24/7 Guardhouse & CCTV Network'
     ],
     featuredImage: BIKAL_IMG,
-    masterplanImage: BIKAL_IMG,
-    gallery: [BIKAL_IMG, HERO_IMG],
+    masterplanImage: MASTERPLAN_MODEL_IMG,
+    gallery: [BIKAL_IMG, VILLA_IMG, MASTERPLAN_MODEL_IMG],
     published: true,
     featured: true,
     order: 1,
@@ -325,9 +331,9 @@ const initialProjects: Project[] = [
       'Dietary Kitchen & Private Executive Dining',
       'Full Concierge & Assisted Mobility Fleet'
     ],
-    featuredImage: HERO_IMG,
-    masterplanImage: HERO_IMG,
-    gallery: [HERO_IMG, CLARK_IMG],
+    featuredImage: ELDERLY_CARE_IMG,
+    masterplanImage: MASTERPLAN_MODEL_IMG,
+    gallery: [ELDERLY_CARE_IMG, ABOUT_STEWARDSHIP_IMG],
     published: true,
     featured: true,
     order: 5,
@@ -352,7 +358,7 @@ const initialProperties: Property[] = [
     description: 'Prime regular-cut corner residential lot fronting the primary boulevard with unobstructed eastern morning sunrise orientation.',
     features: ['Corner Lot', 'Near Main Clubhouse', 'Underground Drainage', 'Clean Title On Hand'],
     featuredImage: BIKAL_IMG,
-    images: [BIKAL_IMG, HERO_IMG],
+    images: [BIKAL_IMG, SURVEY_LAND_IMG],
     published: true,
     createdAt: '2026-06-01T08:00:00Z',
     updatedAt: '2026-09-10T11:00:00Z'
@@ -375,8 +381,8 @@ const initialProperties: Property[] = [
     currency: 'PHP',
     description: 'Signature two-storey modern tropical residence featuring double-height ceiling living room, master suite with walk-in closet, maid quarters, and landscaped lanai.',
     features: ['4 Bedrooms Ensuite', 'High Ceilings', '2-Car Garage', 'Covered Lanai', 'Solar-Ready Roof'],
-    featuredImage: BIKAL_IMG,
-    images: [BIKAL_IMG, HERO_IMG],
+    featuredImage: VILLA_IMG,
+    images: [VILLA_IMG, BIKAL_IMG],
     published: true,
     createdAt: '2026-06-05T09:30:00Z',
     updatedAt: '2026-09-15T15:00:00Z'
@@ -397,8 +403,8 @@ const initialProperties: Property[] = [
     currency: 'PHP',
     description: 'Full-floor Grade-A commercial office space ready for institutional headquarters or BPO operations with panoramic views of Clark.',
     features: ['Grade-A Specification', 'Dual Power Substation', 'LEED Target Design', 'Clark Tax Incentives'],
-    featuredImage: CLARK_IMG,
-    images: [CLARK_IMG, HERO_IMG],
+    featuredImage: OFFICE_FLOOR_IMG,
+    images: [OFFICE_FLOOR_IMG, CLARK_IMG],
     published: true,
     createdAt: '2026-07-01T10:00:00Z',
     updatedAt: '2026-09-20T10:00:00Z'
@@ -426,6 +432,26 @@ const initialProperties: Property[] = [
     published: true,
     createdAt: '2026-07-15T14:00:00Z',
     updatedAt: '2026-09-22T08:00:00Z'
+  },
+  {
+    id: 'prop-taysan-01',
+    slug: 'taysan-agro-industrial-development-parcel',
+    title: 'Taysan Agro-Industrial Development Parcel (2.5 Hectares)',
+    projectId: 'proj-taysan-02',
+    projectName: 'Taysan Integrated Masterplanned Development',
+    location: 'Taysan Growth Corridor, Batangas',
+    category: 'Commercial Space',
+    status: 'Under Development',
+    lotArea: 25000,
+    price: 37500000,
+    currency: 'PHP',
+    description: 'Contiguous development-ready agricultural and eco-industrial land parcel with direct arterial road access, surveyed boundaries, and solar-ready topography.',
+    features: ['Surveyed Contiguous Parcel', 'Arterial Road Access', 'Agro-Industrial Zoning', 'Renewable Energy Ready'],
+    featuredImage: SURVEY_LAND_IMG,
+    images: [SURVEY_LAND_IMG, TAYSAN_IMG],
+    published: true,
+    createdAt: '2026-08-01T10:00:00Z',
+    updatedAt: '2026-09-25T14:00:00Z'
   }
 ];
 
@@ -713,6 +739,39 @@ const initialMediaLibrary: MediaItem[] = [
     dimensions: '1920x1080',
     uploadedBy: 'System',
     createdAt: '2026-09-01T08:00:00Z'
+  },
+  {
+    id: 'med-006',
+    title: 'Integrated Elderly Care & Medical Hospitality Campus',
+    category: 'Project Rendering',
+    url: ELDERLY_CARE_IMG,
+    alt: 'Integrated Elderly Care Campus in Clark Freeport Zone',
+    fileSize: '2.2 MB',
+    dimensions: '1920x1080',
+    uploadedBy: 'System',
+    createdAt: '2026-09-15T08:00:00Z'
+  },
+  {
+    id: 'med-007',
+    title: 'Bikal Modern Tropical Executive Villa',
+    category: 'Project Rendering',
+    url: VILLA_IMG,
+    alt: 'Modern Tropical Executive Single-Detached Residence',
+    fileSize: '2.1 MB',
+    dimensions: '1920x1080',
+    uploadedBy: 'System',
+    createdAt: '2026-09-15T08:30:00Z'
+  },
+  {
+    id: 'med-008',
+    title: 'Architectural Masterplan Physical Scale Model',
+    category: 'Masterplan',
+    url: MASTERPLAN_MODEL_IMG,
+    alt: 'Hopeland Architectural Masterplan Scale Model',
+    fileSize: '1.9 MB',
+    dimensions: '1920x1080',
+    uploadedBy: 'System',
+    createdAt: '2026-09-15T09:00:00Z'
   }
 ];
 

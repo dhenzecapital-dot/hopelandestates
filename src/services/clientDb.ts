@@ -15,7 +15,7 @@ import {
   User
 } from '../types/index.ts';
 
-const DB_STORAGE_KEY = 'hl_client_db_v3';
+const DB_STORAGE_KEY = 'hl_client_db_v4';
 
 interface ClientDatabase {
   users: (User & { passwordHash?: string; salt?: string })[];

@@ -4,15 +4,11 @@ import { api } from '../services/api.ts';
 import { getAssetUrl } from '../utils/assets.ts';
 import {
   MapPin,
-  Building,
-  Calendar,
   CheckCircle2,
   AlertCircle,
   FileText,
   ArrowLeft,
   Send,
-  Shield,
-  Layers,
   Sparkles
 } from 'lucide-react';
 
@@ -81,10 +77,12 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
     return (
       <div className="max-w-4xl mx-auto py-20 px-4 text-center space-y-4">
         <h2 className="text-2xl font-serif font-bold text-[#0B2345]">Development Not Found</h2>
-        <p className="text-xs text-slate-500">The requested development record could not be located in our active database.</p>
+        <p className="text-xs text-slate-500">
+          The requested development record could not be located in our active database.
+        </p>
         <button
           onClick={() => onNavigate('/projects')}
-          className="px-6 py-2 bg-[#0B2345] text-white text-xs font-semibold rounded uppercase"
+          className="px-6 py-2.5 bg-[#0B2345] text-white text-xs font-semibold rounded-[4px] uppercase tracking-wider"
         >
           Return to Portfolio
         </button>
@@ -93,104 +91,130 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
   }
 
   return (
-    <div className="w-full bg-[#F7F8FA] pb-20">
-      {/* Top Breadcrumb & Navigation */}
-      <div className="bg-[#0B2345] text-white border-b border-[#163A63] py-4">
+    <div className="w-full bg-[#F7F8FA] text-[#17263A] pb-20">
+      {/* Top Breadcrumb Bar */}
+      <div className="bg-[#071A33] text-white border-b border-[#163A63] py-3.5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <button
             onClick={() => onNavigate('/projects')}
             className="inline-flex items-center gap-2 text-xs text-slate-300 hover:text-white transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4 text-[#C49A32]" />
             <span>Back to All Developments</span>
           </button>
           <div className="flex items-center gap-2 text-xs text-slate-400">
             <span>Portfolio</span>
             <span aria-hidden="true">/</span>
-            <span className="text-[#D8B65B]">{project.category}</span>
+            <span className="text-[#D8B65B] font-semibold uppercase tracking-wider">{project.category}</span>
           </div>
         </div>
       </div>
 
-      {/* Hero Visual Banner */}
-      <div className="relative h-[380px] sm:h-[460px] w-full bg-slate-900 overflow-hidden">
+      {/* Hero Architectural Visual Banner */}
+      <div className="relative h-[400px] sm:h-[480px] w-full bg-[#071A33] overflow-hidden border-b border-[#163A63]">
         <img
           src={getAssetUrl(project.featuredImage)}
           alt={project.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B2345] via-[#0B2345]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071A33] via-[#0B2345]/55 to-transparent" />
 
-        <div className="absolute bottom-8 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-          <div className="flex items-center gap-2 text-xs font-semibold text-[#D8B65B] uppercase tracking-wider mb-2">
+        <div className="absolute bottom-10 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+          <div className="inline-flex flex-wrap items-center gap-2 text-xs font-semibold text-[#D8B65B] uppercase tracking-[0.16em] mb-3">
             <span>{project.category}</span>
             <span aria-hidden="true">·</span>
             <span>Stage: {project.stage}</span>
             <span aria-hidden="true">·</span>
-            <span>{project.indicativeLandArea}</span>
+            <span className="font-mono">{project.indicativeLandArea}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-2 leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-2.5 leading-tight">
             {project.name}
           </h1>
-          <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-200">
             <MapPin className="w-4 h-4 text-[#C49A32]" />
             <span>{project.location}</span>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        {/* Status Transparency Banner */}
-        <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-3 text-xs text-amber-900 mb-8">
-          <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+        {/* Institutional Status Notice */}
+        <div className="p-5 bg-white border-l-4 border-[#C49A32] border-y border-r border-slate-200 rounded-[4px] flex items-start gap-3.5 text-xs text-slate-700 mb-10">
+          <AlertCircle className="w-5 h-5 text-[#C49A32] shrink-0 mt-0.5" />
           <div className="space-y-1">
-            <h4 className="font-semibold text-amber-950 uppercase tracking-wide">
-              Official Development Status Notice:
+            <h4 className="font-semibold text-[#0B2345] uppercase tracking-wider">
+              Official Development Status Notice — {project.statusText}
             </h4>
-            <p className="leading-relaxed font-medium">
-              {project.statusText}
-            </p>
-            <p className="text-[11px] text-amber-800">
-              Information on this preliminary development dossier is compiled for corporate planning, investor evaluation, and statutory verification. Formal approvals, land titles, and engineering designs are confirmed prior to public lot release.
+            <p className="text-slate-600 leading-relaxed">
+              Information in this development dossier is compiled for corporate planning, institutional evaluation, and statutory verification. Final engineering schematics, permits, and subdivision configurations are subject to regulatory approval prior to public release.
             </p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Main Content Area */}
-          <div className="lg:col-span-8 space-y-10">
-            {/* Executive Overview */}
-            <div className="bg-white p-8 rounded-lg border border-slate-200 shadow-xs space-y-4">
-              <h2 className="text-xl font-serif font-bold text-[#0B2345] border-b border-slate-100 pb-3">
-                Project Overview & Executive Summary
-              </h2>
+          {/* Main Dossier Content */}
+          <div className="lg:col-span-8 space-y-8">
+            {/* Executive Summary & Concept */}
+            <div className="bg-white p-8 rounded-[5px] border border-slate-200 space-y-6">
+              <div>
+                <span className="text-[11px] font-semibold text-[#C49A32] uppercase tracking-[0.18em] block mb-1">
+                  Executive Dossier
+                </span>
+                <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#0B2345] border-b border-slate-100 pb-3">
+                  Project Overview & Development Concept
+                </h2>
+              </div>
+
               <p className="text-sm text-slate-600 leading-relaxed">
                 {project.executiveSummary || project.description}
               </p>
+
+              {project.developmentConcept && (
+                <div className="p-5 bg-[#F7F8FA] rounded-[4px] border-l-4 border-[#0B2345] space-y-1.5">
+                  <span className="text-[11px] font-semibold text-[#0B2345] uppercase tracking-wider block">
+                    Architectural & Masterplan Concept
+                  </span>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    {project.developmentConcept}
+                  </p>
+                </div>
+              )}
             </div>
 
-            {/* Development Concept */}
-            <div className="bg-white p-8 rounded-lg border border-slate-200 shadow-xs space-y-4">
-              <h2 className="text-xl font-serif font-bold text-[#0B2345] border-b border-slate-100 pb-3">
-                Development Concept
-              </h2>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                {project.developmentConcept}
-              </p>
-            </div>
-
-            {/* Proposed Components */}
+            {/* Proposed Masterplan Components */}
             {project.proposedComponents && project.proposedComponents.length > 0 && (
-              <div className="bg-white p-8 rounded-lg border border-slate-200 shadow-xs space-y-4">
+              <div className="bg-white p-8 rounded-[5px] border border-slate-200 space-y-5">
                 <h2 className="text-xl font-serif font-bold text-[#0B2345] border-b border-slate-100 pb-3">
                   Proposed Components & Masterplan Features
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {project.proposedComponents.map((comp, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700 bg-slate-50 p-3 rounded border border-slate-100">
+                    <div
+                      key={idx}
+                      className="flex items-start gap-2.5 text-xs text-slate-700 bg-[#F7F8FA] p-3.5 rounded-[4px] border border-slate-200/70"
+                    >
                       <CheckCircle2 className="w-4 h-4 text-[#C49A32] shrink-0 mt-0.5" />
-                      <span className="font-medium">{comp}</span>
+                      <span className="font-medium leading-relaxed">{comp}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Development Specifications Matrix */}
+            {project.specifications && Object.keys(project.specifications).length > 0 && (
+              <div className="bg-white p-8 rounded-[5px] border border-slate-200 space-y-5">
+                <h2 className="text-xl font-serif font-bold text-[#0B2345] border-b border-slate-100 pb-3">
+                  Development Specifications & Engineering Metrics
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {Object.entries(project.specifications).map(([key, val]) => (
+                    <div key={key} className="p-4 bg-[#F7F8FA] rounded-[4px] border border-slate-200/70 text-xs">
+                      <span className="text-slate-500 block text-[10.5px] uppercase tracking-wider mb-1">
+                        {key}
+                      </span>
+                      <span className="font-semibold text-[#0B2345] text-sm font-mono">{val}</span>
                     </div>
                   ))}
                 </div>
@@ -199,71 +223,65 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
 
             {/* Previously Reported Information */}
             {project.previouslyReportedInfo && project.previouslyReportedInfo.length > 0 && (
-              <div className="bg-white p-8 rounded-lg border border-slate-200 shadow-xs space-y-4">
+              <div className="bg-white p-8 rounded-[5px] border border-slate-200 space-y-4">
                 <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
                   <FileText className="w-5 h-5 text-[#C49A32]" />
                   <h2 className="text-xl font-serif font-bold text-[#0B2345]">
-                    Previously Discussed Property Information
+                    Recorded Planning Parameters
                   </h2>
                 </div>
-                <ul className="space-y-2 text-xs text-slate-600">
+                <ul className="space-y-2.5 text-xs text-slate-600">
                   {project.previouslyReportedInfo.map((info, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
+                    <li key={idx} className="flex items-start gap-2.5">
                       <span className="text-[#C49A32] font-bold">·</span>
-                      <span>{info}</span>
+                      <span className="leading-relaxed">{info}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             )}
 
-            {/* Specifications Matrix */}
-            {project.specifications && Object.keys(project.specifications).length > 0 && (
-              <div className="bg-white p-8 rounded-lg border border-slate-200 shadow-xs space-y-4">
-                <h2 className="text-xl font-serif font-bold text-[#0B2345] border-b border-slate-100 pb-3">
-                  Development Specifications & Engineering Metrics
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {Object.entries(project.specifications).map(([key, val]) => (
-                    <div key={key} className="border-b border-slate-100 pb-2 text-xs">
-                      <span className="text-slate-500 block text-[11px] uppercase tracking-wider">{key}</span>
-                      <span className="font-semibold text-slate-800 text-sm">{val}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Amenities */}
+            {/* Planned Amenities */}
             {project.amenities && project.amenities.length > 0 && (
-              <div className="bg-white p-8 rounded-lg border border-slate-200 shadow-xs space-y-4">
+              <div className="bg-white p-8 rounded-[5px] border border-slate-200 space-y-4">
                 <h2 className="text-xl font-serif font-bold text-[#0B2345] border-b border-slate-100 pb-3">
                   Planned Amenities & Infrastructure
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {project.amenities.map((amenity, idx) => (
-                    <div key={idx} className="p-3 bg-slate-50 rounded border border-slate-100 text-xs text-slate-700 flex items-center gap-2">
+                    <div
+                      key={idx}
+                      className="p-3.5 bg-[#F7F8FA] rounded-[4px] border border-slate-200/70 text-xs text-slate-700 flex items-center gap-2"
+                    >
                       <Sparkles className="w-3.5 h-3.5 text-[#C49A32] shrink-0" />
-                      <span>{amenity}</span>
+                      <span className="font-medium">{amenity}</span>
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Visual Gallery */}
+            {/* Architectural Renderings & Masterplan Gallery */}
             {project.gallery && project.gallery.length > 0 && (
-              <div className="bg-white p-8 rounded-lg border border-slate-200 shadow-xs space-y-4">
-                <h2 className="text-xl font-serif font-bold text-[#0B2345] border-b border-slate-100 pb-3">
-                  Architectural Renderings & Masterplan Imagery
-                </h2>
+              <div className="bg-white p-8 rounded-[5px] border border-slate-200 space-y-5">
+                <div>
+                  <span className="text-[11px] font-semibold text-[#C49A32] uppercase tracking-[0.18em] block mb-1">
+                    Visual Documentation
+                  </span>
+                  <h2 className="text-xl font-serif font-bold text-[#0B2345] border-b border-slate-100 pb-3">
+                    Architectural Visualization & Site Perspectives
+                  </h2>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {project.gallery.map((imgUrl, i) => (
-                    <div key={i} className="aspect-[16/9] rounded overflow-hidden border border-slate-200 bg-slate-100">
+                    <div
+                      key={i}
+                      className="aspect-[16/10] rounded-[4px] overflow-hidden border border-slate-200 bg-[#071A33]"
+                    >
                       <img
                         src={getAssetUrl(imgUrl)}
-                        alt={`${project.name} render ${i + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        alt={`${project.name} visualization ${i + 1}`}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                         referrerPolicy="no-referrer"
                       />
                     </div>
@@ -273,56 +291,67 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
             )}
           </div>
 
-          {/* Sidebar & Inquiry Form */}
+          {/* Right Sidebar: Snapshot & Direct Inquiry */}
           <div className="lg:col-span-4 space-y-6">
-            {/* Quick Facts Card */}
-            <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-xs space-y-4">
-              <h3 className="font-serif font-bold text-sm text-[#0B2345] uppercase tracking-wider border-b border-slate-100 pb-2">
+            {/* Development Snapshot Card */}
+            <div className="bg-white p-6 rounded-[5px] border border-slate-200 space-y-4">
+              <h3 className="font-serif font-bold text-sm text-[#0B2345] uppercase tracking-wider border-b border-slate-100 pb-2.5">
                 Development Snapshot
               </h3>
-              <div className="space-y-3 text-xs">
+              <div className="space-y-3.5 text-xs">
                 <div>
-                  <span className="text-slate-400 block text-[11px] uppercase">Category</span>
-                  <span className="font-semibold text-slate-800">{project.category}</span>
+                  <span className="text-slate-400 block text-[10.5px] uppercase tracking-wider">Category</span>
+                  <span className="font-semibold text-[#0B2345]">{project.category}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px] uppercase">Current Stage</span>
-                  <span className="font-semibold text-slate-800">{project.stage}</span>
+                  <span className="text-slate-400 block text-[10.5px] uppercase tracking-wider">Development Stage</span>
+                  <span className="font-semibold text-[#0B2345]">{project.stage}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px] uppercase">Indicative Land Area</span>
-                  <span className="font-semibold text-slate-800">{project.indicativeLandArea}</span>
+                  <span className="text-slate-400 block text-[10.5px] uppercase tracking-wider">Indicative Land Area</span>
+                  <span className="font-semibold text-[#0B2345] font-mono">{project.indicativeLandArea}</span>
                 </div>
                 {project.indicativeBudget && (
                   <div>
-                    <span className="text-slate-400 block text-[11px] uppercase">Indicative Valuation / Budget</span>
-                    <span className="font-semibold text-slate-800">{project.indicativeBudget}</span>
+                    <span className="text-slate-400 block text-[10.5px] uppercase tracking-wider">
+                      Indicative Valuation / Scope
+                    </span>
+                    <span className="font-semibold text-[#0B2345] font-mono">{project.indicativeBudget}</span>
                   </div>
                 )}
                 <div>
-                  <span className="text-slate-400 block text-[11px] uppercase">Location</span>
-                  <span className="font-semibold text-slate-800">{project.location}</span>
+                  <span className="text-slate-400 block text-[10.5px] uppercase tracking-wider">Location</span>
+                  <span className="font-semibold text-[#0B2345]">{project.location}</span>
                 </div>
               </div>
             </div>
 
             {/* Direct Project Inquiry Form */}
-            <div className="bg-[#0B2345] text-white p-6 rounded-lg shadow-md border border-[#163A63] space-y-4">
-              <h3 className="font-serif font-bold text-base text-white">
-                Project Inquiry & Pro-Forma Request
-              </h3>
+            <div className="bg-[#0B2345] text-white p-7 rounded-[5px] border border-[#163A63] space-y-4">
+              <div>
+                <span className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#C49A32] block mb-1">
+                  Confidential Dossier
+                </span>
+                <h3 className="font-serif font-bold text-lg text-white">
+                  Project & Briefing Inquiry
+                </h3>
+              </div>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Submit an inquiry regarding {project.name}. Our corporate business development team will contact you under strict confidentiality.
+                Submit an inquiry regarding {project.name}. Our business development division will respond with relevant technical or investment briefings.
               </p>
 
               {inquiryStatus === 'success' ? (
-                <div className="p-4 bg-emerald-950/80 border border-emerald-500/50 rounded space-y-2 text-xs text-emerald-200">
-                  <p className="font-bold text-emerald-300">Inquiry Logged Successfully</p>
-                  <p>Reference: <strong className="text-white font-mono">{referenceNo}</strong></p>
-                  <p className="text-[11px] text-slate-300">Our team has received your inquiry for {project.name}.</p>
+                <div className="p-4 bg-[#071A33] border border-[#C49A32]/50 rounded-[4px] space-y-2 text-xs text-slate-200">
+                  <p className="font-bold text-[#D8B65B]">Inquiry Logged Successfully</p>
+                  <p>
+                    Reference: <strong className="text-white font-mono">{referenceNo}</strong>
+                  </p>
+                  <p className="text-[11px] text-slate-300">
+                    Our team has received your inquiry regarding {project.name}.
+                  </p>
                 </div>
               ) : (
-                <form onSubmit={handleInquirySubmit} className="space-y-3 text-xs">
+                <form onSubmit={handleInquirySubmit} className="space-y-3.5 text-xs">
                   <div>
                     <label className="block text-[11px] uppercase tracking-wider text-slate-300 mb-1">
                       Full Name *
@@ -332,8 +361,8 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                       required
                       value={inquiryName}
                       onChange={(e) => setInquiryName(e.target.value)}
-                      placeholder="e.g. John Doe"
-                      className="w-full px-3 py-2 bg-[#07172F] border border-slate-700 rounded text-white focus:outline-none focus:border-[#C49A32]"
+                      placeholder="e.g. Roberto Lim"
+                      className="w-full px-3 py-2 bg-[#071A33] border border-[#163A63] rounded-[4px] text-white focus:outline-none focus:border-[#C49A32]"
                     />
                   </div>
 
@@ -346,8 +375,8 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                       required
                       value={inquiryEmail}
                       onChange={(e) => setInquiryEmail(e.target.value)}
-                      placeholder="e.g. jdoe@example.com"
-                      className="w-full px-3 py-2 bg-[#07172F] border border-slate-700 rounded text-white focus:outline-none focus:border-[#C49A32]"
+                      placeholder="e.g. rlim@example.com"
+                      className="w-full px-3 py-2 bg-[#071A33] border border-[#163A63] rounded-[4px] text-white focus:outline-none focus:border-[#C49A32]"
                     />
                   </div>
 
@@ -360,7 +389,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                       value={inquiryPhone}
                       onChange={(e) => setInquiryPhone(e.target.value)}
                       placeholder="e.g. +63 917 123 4567"
-                      className="w-full px-3 py-2 bg-[#07172F] border border-slate-700 rounded text-white focus:outline-none focus:border-[#C49A32]"
+                      className="w-full px-3 py-2 bg-[#071A33] border border-[#163A63] rounded-[4px] text-white focus:outline-none focus:border-[#C49A32]"
                     />
                   </div>
 
@@ -374,7 +403,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                       value={inquiryMessage}
                       onChange={(e) => setInquiryMessage(e.target.value)}
                       placeholder={`I am interested in exploring opportunities for ${project.name}...`}
-                      className="w-full px-3 py-2 bg-[#07172F] border border-slate-700 rounded text-white focus:outline-none focus:border-[#C49A32]"
+                      className="w-full px-3 py-2 bg-[#071A33] border border-[#163A63] rounded-[4px] text-white focus:outline-none focus:border-[#C49A32]"
                     />
                   </div>
 
@@ -387,7 +416,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ slug, onNa
                   <button
                     type="submit"
                     disabled={inquiryStatus === 'submitting'}
-                    className="w-full py-2.5 bg-[#C49A32] hover:bg-[#D8B65B] text-[#0B2345] font-semibold rounded uppercase tracking-wider text-xs transition-colors flex items-center justify-center gap-1.5"
+                    className="w-full py-2.5 bg-[#C49A32] hover:bg-[#D8B65B] text-[#0B2345] font-semibold rounded-[4px] uppercase tracking-wider text-xs transition-colors flex items-center justify-center gap-1.5"
                   >
                     <span>{inquiryStatus === 'submitting' ? 'Submitting...' : 'Send Inquiry'}</span>
                     <Send className="w-3.5 h-3.5" />

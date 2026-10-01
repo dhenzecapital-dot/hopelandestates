@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { api } from '../services/api.ts';
 import { InvestorType } from '../types/index.ts';
+import { api } from '../services/api.ts';
+import { getAssetUrl } from '../utils/assets.ts';
 import {
-  TrendingUp,
   Shield,
   Building,
   Handshake,
   CheckCircle2,
-  Lock,
+  AlertCircle,
   Send,
-  AlertCircle
+  Lock
 } from 'lucide-react';
 
 interface InvestmentPageProps {
@@ -70,88 +70,149 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
   };
 
   return (
-    <div className="w-full bg-[#F7F8FA]">
-      {/* Header Banner */}
-      <section className="bg-[#0B2345] text-white py-16 lg:py-20 border-b border-[#163A63]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="text-xs font-semibold tracking-widest text-[#D8B65B] uppercase block mb-2">
-              Capital & Corporate Alliances
-            </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-4">
+    <div className="w-full bg-[#F7F8FA] text-[#17263A]">
+      {/* Architectural Header Banner */}
+      <section className="relative min-h-[340px] sm:min-h-[380px] flex items-center bg-[#071A33] text-white border-b border-[#163A63] overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={getAssetUrl('images/investment/institutional-capital-commercial-corridor.jpg')}
+            alt="Institutional Capital and Commercial Corridor Development in Clark"
+            className="w-full h-full object-cover object-center"
+            referrerPolicy="no-referrer"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-[#071A33]/95 via-[#0B2345]/85 to-[#0B2345]/40"
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 relative z-10 w-full">
+          <div className="max-w-3xl space-y-4">
+            <div className="inline-flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-[#C49A32]" />
+              <span className="text-xs font-semibold tracking-[0.2em] text-[#D8B65B] uppercase">
+                Institutional Capital & Strategic Development Partnerships
+              </span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight text-balance">
               Investment & Joint Venture Partnerships
             </h1>
-            <p className="text-base text-slate-300 leading-relaxed font-light">
-              Collaborate with HopeLand Estates and Realty Corporation on institutional-grade real estate developments, high-yield land masterplans, and strategic co-development ventures across prime Philippine growth corridors.
+            <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl">
+              Collaborate with HopeLand Estates and Realty Corporation on masterplanned commercial corridors, residential subdivisions, and strategic land developments across prime Philippine growth regions.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Investment Philosophy */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-6 space-y-6">
-            <span className="text-xs font-semibold text-[#C49A32] uppercase tracking-wider block">
-              Investment Philosophy
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#0B2345]">
-              Disciplined Capital Allocation Rooted in Tangible Land Value
-            </h2>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              At HopeLand Estates, we approach real estate development as multi-generational wealth creation. We prioritize projects situated along national infrastructure arteries—expressway interchanges, special economic zones, and burgeoning provincial capitals—where population growth and commercial demand are verifiable.
-            </p>
+      {/* Main Editorial & Inquiry Layout */}
+      <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Left Column: Visual Architecture & Investment Governance */}
+          <div className="lg:col-span-6 space-y-8">
+            <div className="space-y-3">
+              <span className="text-xs font-semibold text-[#C49A32] uppercase tracking-[0.18em] block">
+                Capital Underwriting & Governance
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#0B2345] leading-snug text-balance">
+                Disciplined Development Rooted in Tangible Land Value
+              </h2>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                HopeLand structures project-specific partnerships along high-growth infrastructure corridors—including the Clark Freeport Zone, Mabalacat, Taysan, and Rodriguez—where regional accessibility and long-term demand support sustainable development.
+              </p>
+            </div>
 
-            <div className="space-y-4 pt-2">
-              <div className="p-4 bg-white rounded border border-slate-200 shadow-xs flex items-start gap-3">
+            {/* Visual Showcase Pair */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-white rounded-[5px] border border-slate-200 overflow-hidden">
+                <div className="aspect-[16/10] bg-[#071A33] overflow-hidden">
+                  <img
+                    src={getAssetUrl('images/investment/institutional-capital-commercial-corridor.jpg')}
+                    alt="Masterplanned Commercial Corridors"
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-4 space-y-1">
+                  <h3 className="text-xs font-serif font-bold text-[#0B2345] uppercase tracking-wider">
+                    Commercial Corridors
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Grade-A office floors, corporate plazas, and institutional healthcare campuses.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-[5px] border border-slate-200 overflow-hidden">
+                <div className="aspect-[16/10] bg-[#071A33] overflow-hidden">
+                  <img
+                    src={getAssetUrl('images/investment/development-planning-and-underwriting.jpg')}
+                    alt="Development Planning and Masterplan Analysis"
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-4 space-y-1">
+                  <h3 className="text-xs font-serif font-bold text-[#0B2345] uppercase tracking-wider">
+                    Masterplan Underwriting
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Phased horizontal subdivisions and agro-industrial estates with clear title audits.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Governance Pillars */}
+            <div className="space-y-3">
+              <div className="p-4 bg-white rounded-[5px] border border-slate-200 flex items-start gap-3.5">
                 <Shield className="w-5 h-5 text-[#C49A32] shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-semibold text-xs text-[#0B2345] uppercase tracking-wider">
-                    Risk-Mitigated Land Underwriting
+                    Due Diligence & Title Verification
                   </h4>
-                  <p className="text-xs text-slate-600 mt-1">
-                    Every acquisition and joint venture undergoes title authenticity audits, environmental clearances, and rigorous soil/topographical testing before capital deployment.
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Every land asset and co-development proposal undergoes legal title verification, geodetic boundary confirmation, and engineering feasibility review prior to commitment.
                   </p>
                 </div>
               </div>
 
-              <div className="p-4 bg-white rounded border border-slate-200 shadow-xs flex items-start gap-3">
+              <div className="p-4 bg-white rounded-[5px] border border-slate-200 flex items-start gap-3.5">
                 <Building className="w-5 h-5 text-[#C49A32] shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-semibold text-xs text-[#0B2345] uppercase tracking-wider">
-                    Equitable Joint Venture SPVs
+                    Structured Joint Venture SPVs
                   </h4>
-                  <p className="text-xs text-slate-600 mt-1">
-                    We structure transparent special-purpose vehicles that pair landowner equity with our institutional development management and marketing engine.
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    We structure transparent project vehicles pairing land or capital partners with HopeLand's engineering, masterplanning, and project management execution.
                   </p>
                 </div>
               </div>
 
-              <div className="p-4 bg-white rounded border border-slate-200 shadow-xs flex items-start gap-3">
+              <div className="p-4 bg-white rounded-[5px] border border-slate-200 flex items-start gap-3.5">
                 <Handshake className="w-5 h-5 text-[#C49A32] shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-semibold text-xs text-[#0B2345] uppercase tracking-wider">
                     Institutional Governance & Reporting
                   </h4>
-                  <p className="text-xs text-slate-600 mt-1">
-                    Partners receive audited quarterly accounting, project milestone documentation, and direct access to executive committee briefings.
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                    Partners receive structured milestone documentation, transparent accounting, and direct executive oversight throughout project execution.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Regulatory Disclaimer (Mandatory) */}
-            <div className="p-4 bg-slate-100 rounded border border-slate-200 text-[11px] text-slate-600 leading-relaxed flex items-start gap-2">
-              <AlertCircle className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+            {/* Regulatory Notice */}
+            <div className="p-4 bg-white rounded-[5px] border-l-4 border-[#0B2345] border-y border-r border-slate-200 text-[11px] text-slate-600 leading-relaxed flex items-start gap-2.5">
+              <AlertCircle className="w-4 h-4 text-[#C49A32] shrink-0 mt-0.5" />
               <p>
-                <strong>Regulatory Notice:</strong> HopeLand Estates and Realty Corporation does not solicit public deposits or advertise guaranteed financial returns. Real estate investments involve market and developmental risks. All institutional joint venture engagements are executed through negotiated private contracts.
+                <strong className="text-[#0B2345]">Corporate Disclosure:</strong> HopeLand Estates and Realty Corporation (SEC Reg. No. 2026090269825-01) does not solicit public deposits or advertise guaranteed returns. All joint venture and capital partnerships are conducted through formal private agreements subject to due diligence.
               </p>
             </div>
           </div>
 
-          {/* SECTION 6: Official Dedicated Investor Inquiry Form */}
+          {/* Right Column: Official Dedicated Investor Inquiry Form */}
           <div className="lg:col-span-6">
-            <div className="bg-white p-8 sm:p-10 rounded-lg border border-slate-200 shadow-md">
+            <div className="bg-white p-8 sm:p-10 rounded-[6px] border border-slate-200">
               <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
                 <div>
                   <span className="text-[11px] font-semibold text-[#C49A32] uppercase tracking-wider block">
@@ -165,24 +226,24 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
               </div>
 
               {submittedReference ? (
-                <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-900 space-y-4">
+                <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-[5px] text-emerald-900 space-y-4">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-6 h-6 text-emerald-600" />
                     <h4 className="font-serif font-bold text-lg">Inquiry Confirmed</h4>
                   </div>
                   <p className="text-xs leading-relaxed">
-                    Thank you. Your investment inquiry has been officially recorded in our corporate database under strict non-disclosure protocol.
+                    Thank you. Your investment inquiry has been recorded in our corporate registry under strict confidentiality.
                   </p>
                   <div className="p-4 bg-white rounded border border-emerald-200 text-center font-mono">
                     <span className="text-[10px] text-slate-500 block uppercase">Official Reference Number</span>
                     <span className="text-lg font-bold text-[#0B2345]">{submittedReference}</span>
                   </div>
                   <p className="text-[11px] text-slate-600">
-                    A corporate director will contact you via email or phone to initiate formal introductions.
+                    A corporate director will contact you to coordinate formal introductions and project documentation.
                   </p>
                   <button
                     onClick={() => setSubmittedReference(null)}
-                    className="w-full py-2 bg-[#0B2345] text-white text-xs font-semibold rounded uppercase"
+                    className="w-full py-2.5 bg-[#0B2345] text-white text-xs font-semibold rounded-[4px] uppercase tracking-wider"
                   >
                     Submit Another Inquiry
                   </button>
@@ -206,7 +267,7 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         placeholder="e.g. Roberto Pablo"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
+                        className="w-full px-3 py-2 bg-[#F7F8FA] border border-slate-200 rounded-[4px] focus:bg-white focus:outline-none focus:border-[#C49A32]"
                       />
                     </div>
 
@@ -219,7 +280,7 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
                         value={companyName}
                         onChange={(e) => setCompanyName(e.target.value)}
                         placeholder="e.g. Pacific Equity Partners"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
+                        className="w-full px-3 py-2 bg-[#F7F8FA] border border-slate-200 rounded-[4px] focus:bg-white focus:outline-none focus:border-[#C49A32]"
                       />
                     </div>
                   </div>
@@ -235,7 +296,7 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="e.g. partner@example.com"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
+                        className="w-full px-3 py-2 bg-[#F7F8FA] border border-slate-200 rounded-[4px] focus:bg-white focus:outline-none focus:border-[#C49A32]"
                       />
                     </div>
 
@@ -248,7 +309,7 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="e.g. +63 917 123 4567"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
+                        className="w-full px-3 py-2 bg-[#F7F8FA] border border-slate-200 rounded-[4px] focus:bg-white focus:outline-none focus:border-[#C49A32]"
                       />
                     </div>
                   </div>
@@ -264,7 +325,7 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
                         placeholder="e.g. Philippines / Singapore / USA"
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
+                        className="w-full px-3 py-2 bg-[#F7F8FA] border border-slate-200 rounded-[4px] focus:bg-white focus:outline-none focus:border-[#C49A32]"
                       />
                     </div>
 
@@ -275,7 +336,7 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
                       <select
                         value={investorType}
                         onChange={(e) => setInvestorType(e.target.value as InvestorType)}
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
+                        className="w-full px-3 py-2 bg-[#F7F8FA] border border-slate-200 rounded-[4px] focus:bg-white focus:outline-none focus:border-[#C49A32]"
                       >
                         <option value="Individual Investor">Individual Investor</option>
                         <option value="Corporate Investor">Corporate Investor</option>
@@ -294,7 +355,7 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
                       <select
                         value={investmentInterest}
                         onChange={(e) => setInvestmentInterest(e.target.value)}
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
+                        className="w-full px-3 py-2 bg-[#F7F8FA] border border-slate-200 rounded-[4px] focus:bg-white focus:outline-none focus:border-[#C49A32]"
                       >
                         <option value="Residential Masterplanned Developments">Residential Developments</option>
                         <option value="Commercial & Office Park Assets">Commercial & Office Parks</option>
@@ -312,7 +373,7 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
                       <select
                         value={preferredProject}
                         onChange={(e) => setPreferredProject(e.target.value)}
-                        className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
+                        className="w-full px-3 py-2 bg-[#F7F8FA] border border-slate-200 rounded-[4px] focus:bg-white focus:outline-none focus:border-[#C49A32]"
                       >
                         <option value="Bikal Residential (Pampanga)">Bikal Residential (Pampanga)</option>
                         <option value="Taysan Integrated Masterplanned Development (Batangas)">Taysan Agro Estate (Batangas)</option>
@@ -331,40 +392,38 @@ export const InvestmentPage: React.FC<InvestmentPageProps> = ({ onNavigate }) =>
                     <select
                       value={indicativeRange}
                       onChange={(e) => setIndicativeRange(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
+                      className="w-full px-3 py-2 bg-[#F7F8FA] border border-slate-200 rounded-[4px] focus:bg-white focus:outline-none focus:border-[#C49A32]"
                     >
-                      <option value="PHP 5M - PHP 20M">PHP 5,000,000 – PHP 20,000,000</option>
-                      <option value="PHP 20M - PHP 50M">PHP 20,000,000 – PHP 50,000,000</option>
-                      <option value="PHP 50M - PHP 100M">PHP 50,000,000 – PHP 100,000,000</option>
-                      <option value="PHP 100M - PHP 500M">PHP 100,000,000 – PHP 500,000,000</option>
-                      <option value="PHP 500M+ / Institutional Capital">PHP 500,000,000+ (Institutional)</option>
+                      <option value="PHP 10M - PHP 20M">PHP 10M – PHP 20M</option>
+                      <option value="PHP 20M - PHP 50M">PHP 20M – PHP 50M</option>
+                      <option value="PHP 50M - PHP 100M">PHP 50M – PHP 100M</option>
+                      <option value="PHP 100M - PHP 300M">PHP 100M – PHP 300M</option>
+                      <option value="PHP 300M - PHP 500M">PHP 300M – PHP 500M</option>
+                      <option value="PHP 500M+ / Institutional Mandate">PHP 500M+ / Institutional Mandate</option>
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-slate-700 font-semibold mb-1">
-                      Specific Investment Inquiries / Executive Message
+                      Executive Notes / Partnership Objectives
                     </label>
                     <textarea
-                      rows={3}
+                      rows={4}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Outline your timeline, investment mandate, or joint venture prerequisites..."
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded focus:bg-white focus:outline-none focus:border-[#C49A32]"
+                      placeholder="Outline your investment timeline, preferred co-development structure, or request for confidential project brief..."
+                      className="w-full px-3 py-2 bg-[#F7F8FA] border border-slate-200 rounded-[4px] focus:bg-white focus:outline-none focus:border-[#C49A32]"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full py-3 bg-[#0B2345] hover:bg-[#163A63] text-white font-semibold rounded uppercase tracking-wider text-xs transition-colors flex items-center justify-center gap-2"
+                    className="w-full py-3 bg-[#0B2345] hover:bg-[#163A63] text-white font-semibold rounded-[4px] uppercase tracking-wider text-xs transition-colors flex items-center justify-center gap-2"
                   >
-                    <span>{submitting ? 'Registering...' : 'Submit Confidential Inquiry'}</span>
+                    <span>{submitting ? 'Submitting Inquiry...' : 'Submit Confidential Investment Inquiry'}</span>
                     <Send className="w-3.5 h-3.5 text-[#D8B65B]" />
                   </button>
-                  <p className="text-[10.5px] text-slate-400 text-center">
-                    Submissions are protected by strict institutional privacy standards.
-                  </p>
                 </form>
               )}
             </div>
