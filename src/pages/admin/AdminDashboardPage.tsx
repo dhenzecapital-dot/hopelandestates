@@ -214,6 +214,70 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({ onSelect
         </div>
       </div>
 
+      {/* Official Company Profile & SEC Registration Record */}
+      <div className="bg-[#0B2345] text-white rounded-lg border border-[#163A63] p-6 sm:p-7 space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+          <div>
+            <span className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#C49A32] block mb-0.5">
+              Company Profile & Institutional Registry
+            </span>
+            <h2 className="text-lg font-serif font-bold text-white">
+              Official Corporate Registration Information
+            </h2>
+          </div>
+          <span className="text-xs font-mono font-bold text-[#D8B65B] bg-[#071A33] px-3 py-1.5 rounded border border-white/10 self-start sm:self-auto">
+            SEC Reg. No. 2026090269825-01
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 text-xs">
+          <div className="bg-[#071A33] p-4 rounded border border-white/10 lg:col-span-2">
+            <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block mb-1">
+              Company Name
+            </span>
+            <span className="font-serif font-bold text-white text-xs sm:text-sm block">
+              HOPELAND ESTATES AND REALTY CORPORATION
+            </span>
+          </div>
+
+          <div className="bg-[#071A33] p-4 rounded border border-white/10">
+            <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block mb-1">
+              SEC Registration Number
+            </span>
+            <span className="font-mono font-bold text-white text-sm block">
+              2026090269825-01
+            </span>
+          </div>
+
+          <div className="bg-[#071A33] p-4 rounded border border-white/10">
+            <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block mb-1">
+              Registration Status
+            </span>
+            <span className="font-semibold text-[#D8B65B] text-xs sm:text-sm block">
+              Approved by SEC
+            </span>
+          </div>
+
+          <div className="bg-[#071A33] p-4 rounded border border-white/10">
+            <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block mb-1">
+              Country of Registration
+            </span>
+            <span className="font-semibold text-white text-xs sm:text-sm block">
+              Philippines
+            </span>
+          </div>
+        </div>
+
+        <div className="pt-1 flex flex-col lg:flex-row lg:items-center justify-between gap-2 text-xs text-slate-300">
+          <p>
+            <strong className="text-[#C49A32]">Corporate Registration Authority:</strong> Securities and Exchange Commission (SEC), Republic of the Philippines
+          </p>
+          <p className="text-[11px] text-slate-400">
+            Hopeland Estates and Realty Corporation is a Philippine-registered corporation with corporate registration information issued by the Securities and Exchange Commission (SEC) of the Republic of the Philippines.
+          </p>
+        </div>
+      </div>
+
       {/* Quick Action Bar */}
       <div className="bg-[#0B2345] text-white p-6 rounded-lg shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>

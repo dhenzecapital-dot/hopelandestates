@@ -405,9 +405,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     </div>
                     <div>
                       <span className="text-[#C49A32] block font-semibold text-[11px] uppercase tracking-wider mb-0.5">
-                        Institutional Governance
+                        SEC Corporate Registration
                       </span>
-                      <p>Direct Board Oversight, Complete Land Title Verification & Regulatory Compliance</p>
+                      <p>
+                        SEC Registration No. <span className="font-mono font-semibold text-white">2026090269825-01</span> · Approved by SEC (Securities and Exchange Commission, Republic of the Philippines)
+                      </p>
                     </div>
                   </div>
 

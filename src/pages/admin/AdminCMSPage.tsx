@@ -80,6 +80,60 @@ export const AdminCMSPage: React.FC = () => {
       </div>
 
       <form onSubmit={handleSave} className="space-y-8 text-xs">
+        {/* Official Company Profile & SEC Registration (Read-Only Institutional Record) */}
+        <div className="bg-[#0B2345] text-white p-6 rounded-lg border border-[#163A63] space-y-4">
+          <div className="border-b border-white/10 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-[#C49A32] font-semibold block">
+                Company Profile · Institutional Record
+              </span>
+              <h3 className="font-serif font-bold text-base text-white">
+                Official Corporate & SEC Registration Information
+              </h3>
+            </div>
+            <span className="font-mono text-xs font-bold text-[#D8B65B] bg-[#071A33] px-3 py-1 rounded border border-white/10">
+              SEC Reg. No. 2026090269825-01
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+            <div>
+              <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block">
+                Company Name
+              </span>
+              <span className="font-serif font-bold text-white">
+                HOPELAND ESTATES AND REALTY CORPORATION
+              </span>
+            </div>
+            <div>
+              <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block">
+                Corporate Registration Authority
+              </span>
+              <span className="text-slate-200">
+                Securities and Exchange Commission (SEC), Republic of the Philippines
+              </span>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block">
+                  Registration Status
+                </span>
+                <span className="text-[#D8B65B] font-semibold">Approved by SEC</span>
+              </div>
+              <div>
+                <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block">
+                  Country
+                </span>
+                <span className="text-white font-semibold">Philippines</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-[11px] text-slate-300 pt-2 border-t border-white/10">
+            Hopeland Estates and Realty Corporation is a Philippine-registered corporation with corporate registration information issued by the Securities and Exchange Commission (SEC) of the Republic of the Philippines.
+          </p>
+        </div>
+
         {/* Section 1: Homepage Hero */}
         <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-xs space-y-4">
           <h3 className="font-serif font-bold text-base text-[#0B2345] border-b border-slate-100 pb-2">

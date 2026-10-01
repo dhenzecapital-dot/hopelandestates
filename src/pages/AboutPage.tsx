@@ -1,6 +1,6 @@
 import React from 'react';
 import { HopelandLogo } from '../components/HopelandLogo.tsx';
-import { ShieldCheck, Target, Eye, Gem, Award, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Target, Eye, CheckCircle2, ArrowRight, Building2 } from 'lucide-react';
 
 interface AboutPageProps {
   onNavigate: (path: string) => void;
@@ -29,7 +29,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       {/* Main Corporate Overview */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-8 space-y-8 bg-white p-8 sm:p-10 rounded-lg border border-slate-200 shadow-sm">
+          <div className="lg:col-span-8 space-y-8 bg-white p-8 sm:p-10 rounded-lg border border-slate-200 shadow-xs">
             <div>
               <span className="text-xs font-semibold text-[#C49A32] uppercase tracking-wider block mb-1">
                 Company Background
@@ -43,6 +43,78 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <p className="text-sm text-slate-600 leading-relaxed">
                 Our operations span the entire development value chain: from land acquisition and legal title due diligence, to civil engineering, architectural masterplanning, construction management, and institutional joint venture structuring.
               </p>
+            </div>
+
+            {/* Official Corporate Identity & SEC Registration Section */}
+            <div className="bg-[#0B2345] text-white p-7 sm:p-8 rounded-[5px] border border-[#163A63] space-y-6">
+              <div className="border-b border-white/10 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#C49A32] block mb-1">
+                    Corporate Identity & Legal Registration
+                  </span>
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-white">
+                    Official Corporate Information
+                  </h3>
+                </div>
+                <span className="text-xs font-mono text-[#D8B65B] bg-[#071A33] px-3 py-1.5 rounded-[3px] border border-white/10 self-start sm:self-auto">
+                  SEC Reg. No. 2026090269825-01
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-xs">
+                <div className="space-y-1">
+                  <span className="text-[10.5px] font-semibold uppercase tracking-wider text-[#C49A32] block">
+                    Company Name
+                  </span>
+                  <p className="font-serif font-bold text-white text-sm">
+                    HOPELAND ESTATES AND REALTY CORPORATION
+                  </p>
+                </div>
+
+                <div className="space-y-1">
+                  <span className="text-[10.5px] font-semibold uppercase tracking-wider text-[#C49A32] block">
+                    SEC Registration Number
+                  </span>
+                  <p className="font-mono font-bold text-white text-sm tracking-wide">
+                    2026090269825-01
+                  </p>
+                </div>
+
+                <div className="space-y-1">
+                  <span className="text-[10.5px] font-semibold uppercase tracking-wider text-[#C49A32] block">
+                    Corporate Registration Authority
+                  </span>
+                  <p className="text-slate-200 leading-relaxed">
+                    Securities and Exchange Commission (SEC), Republic of the Philippines
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <span className="text-[10.5px] font-semibold uppercase tracking-wider text-[#C49A32] block">
+                      Registration Status
+                    </span>
+                    <p className="text-white font-semibold">
+                      Approved by SEC
+                    </p>
+                  </div>
+
+                  <div className="space-y-1">
+                    <span className="text-[10.5px] font-semibold uppercase tracking-wider text-[#C49A32] block">
+                      Country of Registration
+                    </span>
+                    <p className="text-white font-semibold">
+                      Philippines
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Hopeland Estates and Realty Corporation is a Philippine-registered corporation with corporate registration information issued by the Securities and Exchange Commission (SEC) of the Republic of the Philippines.
+                </p>
+              </div>
             </div>
 
             {/* Vision & Mission */}
@@ -106,8 +178,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
 
           {/* Right Column: Brand Identity & Symbolism */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="bg-[#0B2345] text-white p-8 rounded-lg shadow-md border border-[#163A63] text-center">
-              <HopelandLogo variant="full" showBadgeBackground height={110} className="mx-auto mb-4" />
+            <div className="bg-[#0B2345] text-white p-8 rounded-lg border border-[#163A63] text-center">
+              <HopelandLogo variant="full" height={96} className="mx-auto mb-4" />
               <h3 className="font-serif font-bold text-lg text-white mb-1">
                 Official Brand Identity
               </h3>
@@ -125,9 +197,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                   <strong>The Horizon Arc:</strong> Embodies our expansive land vision—bridging fertile Philippine topography with tomorrow's sustainable masterplanned communities.
                 </p>
               </div>
+              <div className="mt-5 pt-4 border-t border-slate-700/80 text-left text-[11px] text-slate-300 space-y-1">
+                <span className="text-[#C49A32] uppercase tracking-wider font-semibold block">
+                  SEC Corporate Registration
+                </span>
+                <p className="font-mono text-white font-semibold">Reg. No. 2026090269825-01</p>
+                <p className="text-slate-400">Approved by SEC · Republic of the Philippines</p>
+              </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm space-y-4">
+            <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-xs space-y-4">
               <h4 className="font-serif font-bold text-sm text-[#0B2345] uppercase tracking-wider">
                 Corporate Inquiries
               </h4>

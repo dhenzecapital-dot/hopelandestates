@@ -25,8 +25,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               Building Strong Foundations for Better Tomorrows.
             </p>
             <p className="text-xs text-slate-400 leading-relaxed max-w-md">
-              Hopeland Estates and Realty Corporation is an institutional Philippine property development firm. We develop masterplanned residential communities, strategic commercial parks, and integrated agricultural estates with rigorous engineering, transparency, and sustainable stewardship.
+              Hopeland Estates and Realty Corporation is a Philippine-registered corporation with corporate registration information issued by the Securities and Exchange Commission (SEC) of the Republic of the Philippines.
             </p>
+            <div className="pt-1 text-xs text-slate-300 space-y-1 border-l-2 border-[#C49A32] pl-3">
+              <p className="font-serif font-bold text-white text-[11.5px] tracking-wide">
+                HOPELAND ESTATES AND REALTY CORPORATION
+              </p>
+              <p className="text-[11px] text-slate-300">
+                <span className="text-[#C49A32] font-semibold">SEC Registration No.:</span>{' '}
+                <span className="font-mono text-white font-semibold">2026090269825-01</span> · Approved by SEC
+              </p>
+              <p className="text-[11px] text-slate-400">
+                Securities and Exchange Commission (SEC), Republic of the Philippines
+              </p>
+            </div>
             <div className="pt-2 text-xs text-slate-400 space-y-1.5">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C49A32] shrink-0 mt-0.5" />
@@ -170,9 +182,34 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Corporate Legal Disclaimer & Transparency Note */}
-        <div className="py-6 border-b border-slate-800/60 text-[11px] text-slate-500 leading-relaxed space-y-1">
-          <p>
+        {/* Corporate Registration & Legal Information */}
+        <div className="py-6 border-b border-slate-800/60 space-y-4">
+          <div className="bg-[#0B2345] border border-[#163A63] rounded-[4px] p-4 sm:p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4 text-xs">
+            <div className="space-y-1">
+              <span className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#C49A32] block">
+                Corporate Registration and Legal Information
+              </span>
+              <p className="text-slate-200 leading-relaxed">
+                Hopeland Estates and Realty Corporation is a Philippine-registered corporation with corporate registration information issued by the Securities and Exchange Commission (SEC) of the Republic of the Philippines.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 shrink-0 text-[11px] border-t lg:border-t-0 pt-3 lg:pt-0 border-white/10">
+              <div>
+                <span className="text-slate-400 block text-[10px] uppercase">SEC Registration No.</span>
+                <span className="font-mono font-bold text-white">2026090269825-01</span>
+              </div>
+              <div>
+                <span className="text-slate-400 block text-[10px] uppercase">Registration Status</span>
+                <span className="font-semibold text-[#D8B65B]">Approved by SEC</span>
+              </div>
+              <div>
+                <span className="text-slate-400 block text-[10px] uppercase">Jurisdiction</span>
+                <span className="font-semibold text-white">Philippines</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-[11px] text-slate-500 leading-relaxed">
             <strong className="text-slate-400">Corporate Development Disclosure:</strong> Project specifications, land areas, budgets, architectural renderings, and timeline references displayed on this portal include preliminary concepts and development opportunities currently undergoing feasibility validation, environmental permitting, and governmental regulatory approvals. HopeLand Estates and Realty Corporation conducts business under applicable Philippine regulatory frameworks.
           </p>
         </div>
@@ -180,7 +217,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>
-            © {new Date().getFullYear()} Hopeland Estates and Realty Corporation. All rights reserved.
+            © {new Date().getFullYear()} Hopeland Estates and Realty Corporation (SEC Reg. No. 2026090269825-01). All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <button onClick={() => handleNav('/privacy')} className="hover:text-slate-300 transition-colors">

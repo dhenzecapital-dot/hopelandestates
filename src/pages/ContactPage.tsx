@@ -132,6 +132,59 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
+            {/* Official Corporate Registration & Legal Identity */}
+            <div className="bg-[#0B2345] text-white p-7 rounded-lg border border-[#163A63] space-y-4">
+              <div className="border-b border-white/10 pb-3">
+                <span className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-[#C49A32] block mb-0.5">
+                  Corporate Information
+                </span>
+                <h2 className="text-base font-serif font-bold text-white">
+                  HOPELAND ESTATES AND REALTY CORPORATION
+                </h2>
+              </div>
+
+              <div className="space-y-3 text-xs">
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block">
+                      SEC Registration Number
+                    </span>
+                    <span className="font-mono font-bold text-white text-sm">
+                      2026090269825-01
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block">
+                      Registration Status
+                    </span>
+                    <span className="font-semibold text-white">
+                      Approved by SEC
+                    </span>
+                  </div>
+                </div>
+
+                <div>
+                  <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block">
+                    Corporate Registration Authority
+                  </span>
+                  <span className="text-slate-200">
+                    Securities and Exchange Commission (SEC), Republic of the Philippines
+                  </span>
+                </div>
+
+                <div>
+                  <span className="text-[10px] uppercase tracking-wider text-[#C49A32] font-semibold block">
+                    Country of Registration
+                  </span>
+                  <span className="text-white font-medium">Philippines</span>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-white/10 text-[11px] text-slate-300 leading-relaxed">
+                Hopeland Estates and Realty Corporation is a Philippine-registered corporation with corporate registration information issued by the Securities and Exchange Commission (SEC) of the Republic of the Philippines.
+              </div>
+            </div>
+
             {/* Google Maps Integration Container */}
             <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-xs space-y-3">
               <div className="flex items-center justify-between">
